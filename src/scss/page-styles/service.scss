@@ -1,0 +1,331 @@
+@import "../common";
+
+.main {
+  background: #fff;
+}
+
+.container {
+  max-width: 1040px !important;
+  margin-left: 0 !important;
+  padding-left: 30px !important;
+}
+
+.section-title p {
+  font-size: 18px;
+}
+
+section.service-intro.section, section.service-faq.section, section.service-deadlines, .service-faq .container {
+  padding-bottom: 0;
+}
+
+.breadcrumbs {
+  ol {
+    justify-content: center;
+  }
+
+  .nav__btn {
+    color: var(--link-secondary);
+
+    &.prev {
+      margin-right: 10px;
+    }
+
+    svg path {
+      fill: var(--link-secondary);
+      transition: fill 0.2s;
+    }
+
+    &:hover path {
+      fill: color-mix(in srgb, var(--link-secondary), transparent 25%);
+    }
+  }
+}
+
+.service-badge-sticky {
+  position: sticky;
+  height: 0;
+  max-width: 1040px;
+  z-index: 1000;
+  top: 15px;
+
+  .service-badge {
+    width: fit-content;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 10px;
+
+    color: #ffffff;
+    text-transform: uppercase;
+    justify-self: right;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: rgba(140, 0, 255, 0.8);
+    box-shadow: 0 0 30px 2px rgba(39, 0, 84, 0.35);
+    backdrop-filter: blur(12px);
+    font-size: 14px;
+    opacity: 0.8;
+  }
+}
+
+
+.service-when-useful {
+  .when-useful-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .when-useful-card {
+      padding: 25px;
+      border-radius: 14px;
+      box-sizing: border-box;
+      margin: 0 20px;
+      box-shadow: 0 5px 35px 4px rgba(0, 60, 107, 0.4);
+      transition: all .3s;
+
+      .card-title {
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .card-description {
+        font-size: 16px;
+      }
+
+      &:hover {
+        scale: 1.08;
+        transform: translateY(-10px);
+      }
+    }
+  }
+}
+
+.service-steps .container {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+
+  .service-includes {
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+
+    i {
+      color: var(--accent-color);
+      margin-right: 5px;
+    }
+
+    .include-item {
+      margin-bottom: 30px;
+
+      .include-item-title {
+        color: color-mix(in srgb, var(--default-color), transparent 20%);
+        text-transform: uppercase;
+        line-height: 18px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+    }
+
+  }
+
+  .line {
+    border-left: 1px solid var(--accent-color);
+    opacity: 0.2;
+  }
+
+  .step-title, .service-includes-title {
+    color: var(--heading-color);
+    font-size: 32px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+
+.step-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid var(--accent-color);
+  position: relative;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: var(--background-color);
+    border: 2px solid var(--accent-color);
+  }
+
+  h4 {
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    margin-bottom: 10px;
+  }
+}
+
+.service-cta {
+  .section-title {
+    padding-bottom: 20px;
+  }
+
+  a {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 14px 24px;
+    min-width: 240px;
+    transition: 0.3s !important;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+
+    &:hover {
+      background: #9c2fff;
+    }
+  }
+}
+
+.accordion {
+  margin-top: 20px;
+}
+
+
+@media (max-width: 1200px) {
+  .page-title .container {
+    padding-right: 65px;
+  }
+}
+
+@media (max-width: 993px) {
+  .section-title {
+    h2 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .service-when-useful .when-useful-cards .when-useful-card {
+    .card-title {
+      font-size: 16px;
+    }
+
+    .card-description {
+      font-size: 12px;
+    }
+  }
+
+  .service-steps .container .service-includes-title, .service-steps .container .step-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 993px) {
+  .page-title .container {
+    padding-right: 75px;
+  }
+  .section-title {
+    h2 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .service-when-useful .when-useful-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .when-useful-card {
+      margin-bottom: 20px;
+      max-width: 350px;
+
+      .card-title {
+        font-size: 16px;
+      }
+
+      .card-description {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .service-steps {
+    padding-top: 40px;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: unset;
+
+      .line {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .service-badge-sticky {
+    display: none;
+  }
+
+  .section-title h2, .service-steps .container .service-includes-title, .service-steps .container .step-title {
+    font-size: 22px;
+  }
+
+  .service-steps .container .service-includes .include-item {
+    .include-item-title {
+      font-size: 16px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  .step-item {
+    h4 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+
+}
+
+@media (max-width: 540px) {
+  .container {
+    padding-left: 12px !important;
+  }
+
+  .page-title h1 {
+    font-size: 20px;
+  }
+
+  .section-title h2, .service-steps .container .service-includes-title, .service-steps .container .step-title {
+    font-size: 18px;
+  }
+
+  .section-title p {
+    font-size: 12px;
+  }
+}

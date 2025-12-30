@@ -1,0 +1,27 @@
+:root {
+    --heading-font: "Raleway", sans-serif;
+    --nav-font: "Poppins", sans-serif;
+
+    --background-color: #ffffff; /*BG для сайта в целом*/
+    --default-color: #272829; /* Дефолт цвет для текста */
+    --heading-color: #050d18; /* Дефолт цвет для заголовков */
+    --accent-color: #8800FF; /* Цвет для задания айдентики сайта */
+    --link-secondary: #B9A7FF; /* Цвет для ссылок на темном фоне */
+    --surface-color: #ffffff; /* BG для карточек */
+    --contrast-color: #ffffff; /* Контрастный цвет для выделения при использовании с дефолт цветами заголовков и текстов */
+    --nav-color: #a8a9b4; /* Дефолт цвет для текста ссылок nav меню */
+    --nav-hover-color: #ffffff; /* Дефолт цвет для текста ссылок nav меню, если на них наводят или нажимают */
+}
+
+.light-background {
+    --background-color: #f4fafd;
+    --surface-color: #ffffff;
+}
+
+.dark-background {
+    --background-color: #040b14;
+    --default-color: #ffffff;
+    --heading-color: #ffffff;
+    --surface-color: #151f2b;
+    --contrast-color: #ffffff;
+}

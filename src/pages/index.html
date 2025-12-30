@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+    <title>Портфолио фронтенд-разработчика — Олег Галузинский</title>
+    <meta name="description"
+          content="Портфолио фронтенд-разработчика Олега Галузинского. Лендинги, веб-приложения, UI/UX, JavaScript, HTML, CSS, адаптивная верстка, оптимизация и производительность.">
+    <meta name="keywords"
+          content="фронтенд разработчик, портфолио frontend, веб разработчик, HTML CSS JavaScript, верстка сайтов, лендинги, UI UX, frontend developer portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Портфолио фронтенд-разработчика — Олег Галузинский">
+    <meta property="og:description"
+          content="Современные лендинги и веб-приложения. Чистый код, высокая производительность, адаптивная верстка.">
+    <meta property="og:url" content="https://modernstack.ru/">
+    <meta property="og:image" content="https://modernstack.ru/assets/img/og-preview.webp">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Олег Галузинский">
+    <meta name="theme-color" content="#050d18">
+    <link href="assets/img/logotype.png" rel="icon">
+
+    <% const criticalCss = pick(assets.css, '/critical.min.css'); %>
+    <% const asyncCss = pick(assets.css, '/async.min.css'); %>
+    <% if (criticalCss) { %>
+    <link rel="stylesheet" href="<%= criticalCss %>">
+    <% } %>
+    <% if (asyncCss) { %>
+    <link rel="preload" href="<%= asyncCss %>" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="<%= asyncCss %>">
+    </noscript>
+    <% } %>
+</head>
+
+<body class="index-page">
+<i aria-hidden="true" class="header-toggle d-xl-none bi bi-list"></i>
+<header id="header" class="header dark-background d-flex flex-column">
+    <div class="profile-img">
+        <img src="assets/img/my-profile-img.webp" alt="Profile image" loading="eager" fetchpriority="high"
+             class="img-fluid rounded-circle">
+    </div>
+
+    <a aria-label="Главная страница" href="index.html" class="logo d-flex align-items-center justify-content-center">
+        <svg class="me-2" width="40" height="26" viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="OG logo">
+            <defs>
+                <style>
+                    .og-shape {
+                        stroke: #7A39FF;
+                        fill: none;
+                        stroke-width: 1.5;
+                    }
+
+                    .og-text {
+                        fill: #7A39FF;
+                        font-family: "Roboto", sans-serif;
+                        font-weight: 500;
+                        font-size: 12px;
+                        letter-spacing: 0.12em;
+                    }
+                </style>
+            </defs>
+            <rect class="og-shape" x="1" y="1" width="38" height="24" rx="7" ry="7"/>
+            <text class="og-text" x="52%" y="53%" text-anchor="middle" dominant-baseline="middle">O•G</text>
+        </svg>
+        <h1>Олег Галузинский</h1>
+    </a>
+    <div class="social-links text-center">
+        <a aria-label="Ссылка на профиль GitHub" href="https://github.com/Oleg-Frontend-creator">
+            <i aria-hidden="true" class="bi bi-github"></i>
+        </a>
+        <a aria-label="Ссылка на профиль WhatsApp" href="https://wa.me/79936067183">
+            <i aria-hidden="true" class="bi bi-whatsapp"></i>
+        </a>
+        <a aria-label="Ссылка на профиль Telegram" href="https://t.me/webbuilding_moscow">
+            <i aria-hidden="true" class="bi bi-telegram"></i>
+        </a>
+        <a aria-label="Ссылка на email почту" href="mailto:webbuilding.moscow@yandex.com">
+            <i aria-hidden="true" class="bi bi-envelope-at"></i>
+        </a>
+        <a aria-label="Ссылка для скачивания pdf-портфолио" href="assets/Oleg_Galuzinsky_Frontend_Portfolio_2026.pdf"
+                    download>
+            <i aria-hidden="true" class="bi bi-filetype-pdf"></i>
+        </a>
+    </div>
+    <nav id="navmenu" class="navmenu">
+        <ul>
+            <li>
+                <a href="#hero"><i aria-hidden="true" class="bi bi-house navicon"></i>Главная</a>
+            </li>
+            <li>
+                <a href="#about"><i aria-hidden="true" class="bi bi-person navicon"></i>Обо мне</a>
+            </li>
+            <li>
+                <a href="#stats"><i aria-hidden="true" class="bi bi-bar-chart navicon"></i>Статистика</a>
+            </li>
+            <li>
+                <a href="#skills"><i aria-hidden="true" class="bi bi-code-slash navicon"></i>Навыки</a>
+            </li>
+            <li>
+                <a href="#resume"><i aria-hidden="true" class="bi bi-file-earmark-text navicon"></i>Резюме</a>
+            </li>
+            <li>
+                <a href="#portfolio"><i aria-hidden="true" class="bi bi-images navicon"></i>Портфолио</a>
+            </li>
+            <li>
+                <a href="#technologies"><i aria-hidden="true"
+                                           class="bi bi-gear-wide-connected navicon"></i>Технологии</a>
+            </li>
+            <li>
+                <a href="#services"><i aria-hidden="true" class="bi bi-hdd-stack navicon"></i>Услуги</a>
+            </li>
+            <li>
+                <a href="#contact"><i aria-hidden="true" class="bi bi-envelope navicon"></i>Контакты</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="hero" class="hero section light-background">
+        <div class="container" data-aos="fade-up"
+             data-aos-delay="100">
+            <h2>Олег Галузинский</h2>
+            <p class="typed-text">
+                Я -
+                <span class="typed"
+                      data-typed-items="инженер по сложным техническим системам, спортсмен-стритлифтер, фронтенд-разработчик на Angular и TypeScript">
+                </span>
+            </p>
+            <p class="hero-description">
+                Разрабатываю быстрые и понятные веб-приложения и сайты, опираясь на инженерное мышление, опыт работы
+                с
+                инфраструктурой и спортивную дисциплину
+            </p>
+        </div>
+    </section>
+    <section id="about" class="about section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Обо мне</h2>
+            <p>
+                Создаю современные интерфейсы, работаю с веб-технологиями и постоянно развиваю свои навыки.
+                Комплексно подхожу к задачам, ценю структурность, скорость и чистую логику в проектах.
+            </p>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4 justify-content-center">
+                <div class="col-lg-4">
+                    <img src="assets/img/my-profile-img.webp" class="img-fluid" loading="lazy" alt="Peofile image">
+                </div>
+                <div class="col-lg-8 content">
+                    <h2><span>Фронтенд-разработчик</span> <span class="deleting-span">&amp;</span>
+                        <span>Инженер</span> <span class="deleting-span">&amp;</span>
+                        <span>Спортсмен</span></h2>
+                    <p class="fst-italic pt-3">Фронтенд-разработчик, технический специалист и спортсмен.</p>
+                    <p class="fst-italic pb-3">Развиваюсь в веб-технологиях, системном мышлении и инженерии.</p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Дата
+                                    рождения:</strong>
+                                    <span>25 сентября 2001</span></li>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Сайт:</strong>
+                                    <span>modernstack.ru</span></li>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Телефон:</strong>
+                                    <span>+7 (993) 606-71-83</span></li>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Город:</strong>
+                                    <span>Москва, Россия</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Возраст:</strong>
+                                    <span>24</span></li>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Почта:</strong>
+                                    <span>webbuilding.moscow@yandex.com</span></li>
+                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Фриланс:</strong>
+                                    <span>Открыт к проектам</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="pt-3">
+                        Я — фронтенд-разработчик с инженерным образованием и опытом работы со сложными техническими
+                        системами. Развиваюсь в веб-технологиях, архитектуре приложений и силовой подготовке. Люблю
+                        создавать удобные и логичные интерфейсы, улучшать архитектуру и разбираться в сложных процессах
+                        «под капотом». В работе ценю аккуратность, предсказуемость, дисциплину и спокойный,
+                        профессиональный подход к задачам.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="stats" class="stats section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <i aria-hidden="true" class="bi bi-gear"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p><strong>Года Практики</strong> <span>самостоятельно и под руководством наставников</span></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <i aria-hidden="true" class="bi bi-journal-richtext"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p><strong>Сильных проектов</strong> <span>в портфолио</span></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <i aria-hidden="true" class="bi bi-headset"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p><strong>Проекта На Продакшене</strong> <span>развернуты и доступны пользователям</span></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stats-item">
+                        <i aria-hidden="true" class="bi bi-code-slash"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="550" data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p><strong>Часов Разработки</strong> <span>в реальных задачах, архитектуре и интеграциях</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="skills section light-background">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Навыки</h2>
+            <p>
+                Мои основные навыки во фронтенде и сопутствующих технологиях. Работаю с JavaScript/TypeScript, Angular,
+                адаптивной версткой, SPA-подходом, RxJS и инструментами сборки. Постоянно развиваюсь в архитектуре
+                приложений и качественном UI.
+            </p>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row skills-content skills-animation">
+                <div class="col-lg-6">
+                    <div class="progress">
+                        <span class="skill"><span>HTML</span> <i aria-hidden="true" class="val">100%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                                 aria-valuemax="100" title="HTML-skill-value"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill"><span>CSS / SASS / LESS</span> <i aria-hidden="true"
+                                                                              class="val">90%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                 aria-valuemax="100" title="CSS-skill-value"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill"><span>JavaScript (ES6+)</span> <i aria-hidden="true"
+                                                                              class="val">85%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                                 aria-valuemax="100" title="JS-skill-value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="progress">
+                        <span class="skill"><span>TypeScript & Angular</span> <i aria-hidden="true" class="val">70%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                 aria-valuemax="100" title="TS-skill-value"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill"><span>Git / GitHub / npm</span> <i aria-hidden="true"
+                                                                               class="val">80%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                 aria-valuemax="100" title="Git-skill-value"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill"><span>Gulp / Grunt / Webpack</span> <i aria-hidden="true"
+                                                                                   class="val">65%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
+                                 aria-valuemax="100" title="Webpack-skill-value"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="resume" class="resume section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Резюме</h2>
+            <p>
+                Я развиваюсь как фронтенд-разработчик на основе сильного инженерного образования и опыта работы
+                с автоматизированными системами. Как технический специалист отвечаю за стабильную
+                работу серверного и сетевого оборудования, занимаюсь мониторингом, диагностикой и безопасностью.
+            </p>
+            <p>
+                Инженерный опыт помогает в разработке: понимаю архитектуру «под капотом», выстраиваю предсказуемую
+                логику и делаю интерфейсы, которые работают стабильно, а не только выглядят красиво. Ниже — краткое
+                резюме моего пути.
+            </p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="resume-title">Обзор</h3>
+                    <div class="resume-item pb-0">
+                        <p>
+                            Я — фронтенд-разработчик с инженерным подходом и опытом работы с техническими системами.
+                            Работаю с веб-технологиями и
+                            автоматизированными системами, поддерживаю серверную и сетевую инфраструктуру, помогаю
+                            пользователям как технический специалист.
+                        </p>
+                        <p>
+                            Моя цель — создавать не только красивые, но и <span class="fw-bold">удобные, быстрые и надежные решения</span>,
+                            которые помогают бизнесу. Ценю <span class="fw-bold">структурность</span>, <span
+                                class="fw-bold">качество</span> и внимание к деталям.
+                        </p>
+                        <p>Основные компетенции:</p>
+                        <ul class="list-unstyled">
+                            <li>
+                                — <span class="fw-bold">Техническое образование</span> и инженерное мышление;
+                            </li>
+                            <li>
+                                — Frontend-разработка: сайты, интерфейсы и SPA-приложения на <span class="fw-bold">Angular, TypeScript и JavaScript</span>;
+                            </li>
+                            <li>
+                                — Опыт работы с <span class="fw-bold">серверным оборудованием, ЛВС и элементами безопасности</span>;
+                            </li>
+                            <li>— <span class="fw-bold">Системность</span>: дисциплина (стритлифтинг), логичность и
+                                внимание к деталям.
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="resume-title">Образование</h3>
+                    <div class="resume-item pb-0">
+                        <h4>Высшее образование — инженер автоматизированных систем</h4>
+                        <h5>2019 - 2024</h5>
+                        <p><em>Калининград, Россия</em></p>
+                        <p>Фундаментальное инженерное образование, системное мышление, работа с техническими и
+                            информационными системами.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Курс Frontend Developer — ITLogia</h4>
+                        <h5>2024 - 2025</h5>
+                        <p><em>Москва, Россия — удаленно</em></p>
+                        <p>Прошёл профессиональное обучение в школе ITLogia по направлению фронтенд-разработки, а также
+                            значительно расширил программу за счёт самостоятельной практики и реальных проектов.</p>
+                        <p>Основные компетенции:</p>
+                        <ul class="list-unstyled">
+                            <li>— HTML5, CSS3, адаптивная вёрстка, работа по макетам (Figma & Photoshop)</li>
+                            <li>— JavaScript (ES6+): функции, модули, события, работа с DOM</li>
+                            <li>— Основы React в рамках курса</li>
+                            <li>— Git, GitHub, npm</li>
+                            <li>— Angular 14+: компоненты, модули, сервисы, DI, пайпы, формы</li>
+                            <li>— SPA-проектирование (роутинг, state, оптимизация)</li>
+                            <li>— Работа с backend: MongoDB, авторизация, взаимодействие через REST</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="resume-title">Профессиональный путь</h3>
+
+                    <div class="resume-item">
+                        <h4>Технический специалист &amp; Администратор безопасности</h4>
+                        <h5>2024 - настоящее время</h5>
+                        <p><em>Москва, Россия</em></p>
+                        <ul class="list-unstyled">
+                            <li>— Поддержка сложных автоматизированных систем на критически важном объекте</li>
+                            <li>— Работа с серверным и коммутационным оборудованием</li>
+                            <li>— Администрирование элементов безопасности</li>
+                            <li>— Обслуживание и диагностика ЛВС</li>
+                            <li>— Мониторинг систем и устранение неисправностей</li>
+                            <li>— Обеспечение стабильности работы инфраструктуры</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4>Выездной специалист по ремонту и настройке ПК</h4>
+                        <h5>2024 - 2025</h5>
+                        <p><em>Москва и Московская область, Россия</em></p>
+                        <ul class="list-unstyled">
+                            <li>— Настройка Windows, рабочих окружений, офисного и профильного ПО</li>
+                            <li>— Апгрейд техники: замена и установка SSD, оперативной памяти, настройка охлаждения</li>
+                            <li>— Оптимизация производительности системы, чистка от мусора и вирусов</li>
+                            <li>— Восстановление и перенос данных, резервное копирование</li>
+                            <li>— Консультации пользователей, объяснение сложных вещей простым языком</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-item">
+                        <h4>Frontend-разработчик</h4>
+                        <h5>2024 - настоящее время</h5>
+                        <p><em>Удаленно / проектная работа</em></p>
+                        <ul class="list-unstyled">
+                            <li>— Разработка адаптивных лендингов и SPA-приложений</li>
+                            <li>— Стек: HTML, CSS/SCSS, JavaScript (ES6+), TypeScript, Angular</li>
+                            <li>— Работа с REST API, авторизацией, взаимодействием с backend (MongoDB)</li>
+                            <li>— Проекты: интернет-магазин на Angular, SPA-сервис учёта финансов (LuminCoin), тестовая
+                                платформа (Itlogia Quiz), сайт для привлечения кандидатов и т.д.
+                            </li>
+                            <li>— Использование Git/GitHub, npm, Webpack/Gulp в реальных проектах</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio" class="portfolio section light-background">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Портфолио</h2>
+            <p>
+                Здесь вы найдете примеры работ на Angular, TypeScript и JavaScript — лендинги, web-приложения и
+                интерфейсы с кастомной логикой.
+            </p>
+        </div>
+        <div class="container">
+            <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active">All</li>
+                    <li data-filter=".filter-spa-angular">SPA on Angular</li>
+                    <li data-filter=".filter-spa-typescript">SPA on TypeScript</li>
+                    <li data-filter=".filter-landing">Landing</li>
+                </ul>
+
+                <div class="isotope-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-item isotope-item filter-spa-angular">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/1.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>Интернет-магазин растений</h4>
+                                <p>Полноценный интернет-магазин на Angular с корзиной, избранным, фильтрами и личным
+                                    кабинетом.</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/1.webp"
+                                   data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=plants-angular-shop" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-spa-angular">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/2.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>Сайт digital-агентства с блог-платформой</h4>
+                                <p>Корпоративный сайт с динамическим блогом, фильтрацией статей и системой
+                                    комментариев</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/2.webp"
+                                   data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=digital-agency-blog" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-spa-typescript">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/3.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>LuminCoin Finance — приложение для учёта финансов</h4>
+                                <p>SPA на TypeScript для учёта доходов и расходов с дашбордами и аналитикой.</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/3.webp"
+                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=lumincoin-finance" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-books">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/4.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>Freelance Studio — админ-панель для управления заказами и фрилансерами</h4>
+                                <p>SPA на JavaScript для работы с заказами и фрилансерами</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/4.webp"
+                                   data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=freelance-studio" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-landing">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/5.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>ItlogiaQuiz — сайт-квиз для проверки знаний JavaScript</h4>
+                                <p>Многостраничный JS-квиз с прогресс-баром, таймером и экраном результатов</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/5.webp"
+                                   data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=itlogia-quiz" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-landing">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/6.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>SushiBu — лендинг доставки суши</h4>
+                                <p>Адаптивный лендинг службы доставки суши</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/6.webp"
+                                   data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=sushi-landing" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-landing">
+                        <div class="portfolio-content h-100">
+                            <img src="assets/img/portfolio-index-images/7.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
+                            <div class="portfolio-info">
+                                <h4>Cappadocia Tour — адаптивный лендинг туристической программы</h4>
+                                <p>Адаптивный лендинг с кастомными каруселями и яркой визуальной частью</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/7.webp"
+                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                                        class="bi bi-zoom-in"></i></a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="portfolio-details.html?id=cappadocia-tour" title="Читать далее"
+                                   class="details-link"><i
+                                        class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="technologies" class="technologies section light-background">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Технологии</h2>
+            <p>
+                Работаю с современным технологическим стеком, который подходит как для быстрых коммерческих проектов,
+                так и для крупных SPA-приложений. Комбинирую инженерный подход, архитектурное мышление и внимание к
+                деталям — это позволяет создавать решения, которые легко поддерживать, развивать и оптимизировать.
+            </p>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper init-swiper">
+                <script type="application/json" class="swiper-config">
+                    {
+                        "loop": true,
+                        "speed": 600,
+                        "autoplay": {
+                            "delay": 1000
+                        },
+                        "slidesPerView": "auto",
+                        "breakpoints": {
+                            "320": {
+                                "slidesPerView": 3,
+                                "spaceBetween": 20
+                            },
+                            "500": {
+                                "slidesPerView": 4,
+                                "spaceBetween": 40
+                            },
+                            "1200": {
+                                "slidesPerView": 6,
+                                "spaceBetween": 1
+                            }
+                        }
+                    }
+                </script>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gradient" x1="100%" y1="100%" x2="0%" y2="0%">
+                                        <stop offset="0%" style="stop-color:rgba(153, 50, 204, 1);stop-opacity:1"/>
+                                        <stop offset="100%" style="stop-color:rgba(0, 0, 0, 1);stop-opacity:1"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+                            </svg>
+                            <p>JavaScript</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg height="120px" width="120px" version="1.1" id="_x32_"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 0 512 512" xml:space="preserve">
+<style type="text/css">
+	#_x32_ .st0 {
+        fill: url(#gradient) !important;
+    }
+</style>
+                                <g>
+	<path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
+		c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
+		 M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
+		c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
+                                    <path class="st0" d="M169.574,268.949c5.837,0,9.104,2.171,12.499,6.786c2.709,3.805,5.432,5.167,8.825,5.167
+		c5.028,0,9.105-3.673,9.105-8.965c0-2.171-0.684-4.078-1.774-5.977c-4.622-8.288-14.802-14.669-28.655-14.669
+		c-16.171,0-28.124,7.603-33.012,22.685c-1.899,6.11-2.57,10.865-2.57,24.989c0,14.125,0.67,18.881,2.57,24.99
+		c4.888,15.081,16.841,22.685,33.012,22.685c13.853,0,24.033-6.382,28.655-14.67c1.09-1.899,1.774-3.805,1.774-5.976
+		c0-5.3-4.078-8.965-9.105-8.965c-3.393,0-6.116,1.361-8.825,5.16c-3.394,4.622-6.662,6.794-12.499,6.794
+		c-7.471,0-11.814-3.938-13.853-10.187c-1.089-3.393-1.494-6.654-1.494-19.83c0-13.175,0.406-16.436,1.494-19.829
+		C157.76,272.887,162.103,268.949,169.574,268.949z"/>
+                                    <path class="st0" d="M255.149,289.595l-4.888-0.684c-10.725-1.494-14.398-5.02-14.398-10.187c0-5.837,4.343-9.915,12.498-9.915
+		c5.698,0,11.409,1.634,15.892,3.805c1.899,0.95,3.938,1.494,5.837,1.494c4.888,0,8.7-3.666,8.7-8.693
+		c0-3.261-1.494-5.977-4.762-8.016c-5.432-3.394-15.612-6.11-25.806-6.11c-19.97,0-32.733,11.269-32.733,28.25
+		c0,16.304,10.32,25.13,29.2,27.713l4.901,0.677c10.99,1.494,14.258,4.888,14.258,10.32c0,6.389-5.306,10.872-15.082,10.872
+		c-6.787,0-12.219-1.767-19.83-5.977c-1.634-0.956-3.672-1.634-5.837-1.634c-5.166,0-8.965,3.938-8.965,8.832
+		c0,3.254,1.634,6.382,4.748,8.42c6.116,3.799,16.031,7.876,29.074,7.876c24.032,0,36.266-12.358,36.266-29.067
+		C284.223,300.865,274.307,292.311,255.149,289.595z"/>
+                                    <path class="st0" d="M338.697,289.595l-4.888-0.684c-10.738-1.494-14.398-5.02-14.398-10.187c0-5.837,4.344-9.915,12.484-9.915
+		c5.712,0,11.423,1.634,15.892,3.805c1.913,0.95,3.952,1.494,5.851,1.494c4.887,0,8.686-3.666,8.686-8.693
+		c0-3.261-1.494-5.977-4.748-8.016c-5.432-3.394-15.626-6.11-25.806-6.11c-19.969,0-32.733,11.269-32.733,28.25
+		c0,16.304,10.32,25.13,29.2,27.713l4.888,0.677c11.004,1.494,14.258,4.888,14.258,10.32c0,6.389-5.292,10.872-15.068,10.872
+		c-6.8,0-12.232-1.767-19.829-5.977c-1.634-0.956-3.673-1.634-5.851-1.634c-5.153,0-8.965,3.938-8.965,8.832
+		c0,3.254,1.634,6.382,4.762,8.42c6.117,3.799,16.032,7.876,29.06,7.876c24.047,0,36.266-12.358,36.266-29.067
+		C367.758,300.865,357.843,292.311,338.697,289.595z"/>
+</g>
+</svg>
+                            <p>CSS</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg width="120px" height="120px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0" fill="none" width="20" height="20"/>
+                                <g>
+                                    <path fill="url(#gradient)"
+                                          d="M4 16v-2H2v2H1v-5h1v2h2v-2h1v5H4zM7 16v-4H5.6v-1h3.7v1H8v4H7zM10 16v-5h1l1.4 3.4h.1L14 11h1v5h-1v-3.1h-.1l-1.1 2.5h-.6l-1.1-2.5H11V16h-1zM19 16h-3v-5h1v4h2v1zM9.4 4.2L7.1 6.5l2.3 2.3-.6 1.2-3.5-3.5L8.8 3l.6 1.2zm1.2 4.6l2.3-2.3-2.3-2.3.6-1.2 3.5 3.5-3.5 3.5-.6-1.2z"/>
+                                </g>
+                            </svg>
+                            <p>HTML</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.596-5.242L23.32 3.984 11.999.001zm7.064 18.31h-2.638l-1.422-3.503H8.996l-1.422 3.504h-2.64L12 2.65z"/>
+                            </svg>
+                            <p>Angular</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/>
+                            </svg>
+                            <p>Figma</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg width="120px" height="120px" viewBox="0 -32 256 256" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 preserveAspectRatio="xMidYMid">
+                                <g fill="url(#gradient)">
+                                    <path d="M220.281239,110.513661 C211.374863,110.560291 203.634244,112.705282 197.152641,115.876138 C194.774499,111.166485 192.396357,106.969763 191.976685,103.892168 C191.510383,100.301639 190.95082,98.1100182 191.510383,93.8200364 C192.069945,89.5300546 194.587978,83.4214936 194.541348,82.9551913 C194.494718,82.4888889 193.981785,80.2972678 188.852459,80.2506375 C183.723133,80.2040073 179.29326,81.2298725 178.780328,82.5821494 C178.267395,83.9344262 177.28816,87.0120219 176.635337,90.182878 C175.749362,94.8459016 166.376685,111.492896 161.014208,120.21275 C159.288889,116.808743 157.796721,113.824408 157.47031,111.446266 C157.004007,107.855738 156.444444,105.664117 157.004007,101.374135 C157.56357,97.084153 160.081603,90.975592 160.034973,90.5092896 C159.988342,90.0429872 159.47541,87.8513661 154.346084,87.8047359 C149.216758,87.7581056 144.786885,88.7839709 144.273953,90.1362477 C143.76102,91.4885246 143.201457,94.6593807 142.128962,97.7369763 C141.056466,100.814572 128.606193,128.606193 125.342077,135.78725 C123.663388,139.471038 122.217851,142.408743 121.191985,144.413843 L121.191985,144.413843 C121.191985,144.413843 121.145355,144.553734 121.005464,144.786885 C120.11949,146.512204 119.606557,147.444809 119.606557,147.444809 C119.606557,147.444809 119.606557,147.444809 119.606557,147.491439 C118.907104,148.750455 118.16102,149.916211 117.787978,149.916211 C117.508197,149.916211 116.995264,146.558834 117.881239,141.989071 C119.746448,132.336612 124.176321,117.321676 124.12969,116.808743 C124.12969,116.528962 124.969035,113.917668 121.238616,112.565392 C117.601457,111.213115 116.295811,113.451366 115.969399,113.451366 C115.642987,113.451366 115.409836,114.24408 115.409836,114.24408 C115.409836,114.24408 119.466667,97.3639344 107.669217,97.3639344 C100.301639,97.3639344 90.1362477,105.430965 85.1001821,112.705282 C81.929326,114.430601 75.1679417,118.11439 67.940255,122.07796 C65.189071,123.616758 62.3446266,125.155556 59.6867031,126.601093 C59.5001821,126.414572 59.3136612,126.181421 59.1271403,125.9949 C44.8582878,110.746812 18.4655738,99.9752277 19.5846995,79.5045537 C20.0043716,72.0437158 22.5690346,52.4590164 70.2717668,28.6775956 C109.534426,9.32604736 140.776685,14.6885246 146.185792,26.579235 C153.926412,43.5526412 129.445537,75.0746812 88.8772313,79.6444444 C73.3959927,81.3697632 65.2823315,75.4010929 63.2306011,73.1628415 C61.0856102,70.8313297 60.7591985,70.691439 59.9664845,71.1577413 C58.6608379,71.8571949 59.5001821,73.9555556 59.9664845,75.1679417 C61.1788707,78.3387978 66.168306,83.9344262 74.6083789,86.6856102 C82.0692168,89.1103825 100.208379,90.4626594 122.17122,81.9759563 C146.745355,72.463388 165.957013,46.0240437 160.314754,23.8746812 C154.672495,1.3989071 117.368306,-6.01530055 82.0692168,6.52823315 C61.0856102,13.989071 38.3300546,25.7398907 21.9628415,41.0346084 C2.51803279,59.2204007 -0.559562842,75.028051 0.699453552,81.6495446 C5.22258652,105.151184 37.6306011,120.445902 50.5938069,131.777049 C49.9409836,132.150091 49.3347905,132.476503 48.8218579,132.756284 C42.340255,135.97377 17.6262295,148.890346 11.4710383,162.553005 C4.47650273,178.034244 12.5901639,189.13224 17.9526412,190.624408 C34.5996357,195.240801 51.7129326,186.940619 60.8990893,173.23133 C70.0852459,159.52204 68.9661202,141.70929 64.7227687,133.548998 C64.6761384,133.455738 64.6295082,133.362477 64.5362477,133.269217 C66.2149362,132.289982 67.940255,131.264117 69.6189435,130.284882 C72.9296903,128.326412 76.1938069,126.507832 78.9916211,125.015665 C77.4061931,129.352277 76.2404372,134.528233 75.6808743,141.989071 C74.9814208,150.755556 78.571949,162.133333 83.2816029,166.609836 C85.3799636,168.568306 87.8513661,168.614936 89.4367942,168.614936 C94.9391621,168.614936 97.4105647,164.045173 100.161749,158.636066 C103.519126,152.014572 106.550091,144.320583 106.550091,144.320583 C106.550091,144.320583 102.773042,165.117668 113.031694,165.117668 C116.762113,165.117668 120.539162,160.268124 122.217851,157.796721 L122.217851,157.843352 C122.217851,157.843352 122.311111,157.703461 122.497632,157.377049 C122.870674,156.770856 123.103825,156.397814 123.103825,156.397814 L123.103825,156.304554 C124.595993,153.69326 127.95337,147.77122 132.942805,137.93224 C139.377778,125.248816 145.579599,109.394536 145.579599,109.394536 C145.579599,109.394536 146.139162,113.264845 148.051002,119.699818 C149.170128,123.476867 151.501639,127.626958 153.366849,131.637158 C151.874681,133.735519 150.942077,134.901275 150.942077,134.901275 C150.942077,134.901275 150.942077,134.901275 150.988707,134.947905 C149.776321,136.533333 148.470674,138.258652 147.025137,139.937341 C141.942441,145.999271 135.88051,152.947177 135.041166,154.952277 C134.061931,157.330419 134.295082,159.055738 136.160291,160.454645 C137.512568,161.48051 139.937341,161.620401 142.408743,161.48051 C146.978506,161.154098 150.195993,160.034973 151.781421,159.335519 C154.252823,158.449545 157.143898,157.097268 159.848452,155.092168 C164.837887,151.408379 167.868852,146.139162 167.589071,139.191257 C167.44918,135.367577 166.190164,131.543898 164.651366,127.95337 C165.117668,127.300546 165.537341,126.647723 166.003643,125.9949 C173.884153,114.477231 179.992714,101.840437 179.992714,101.840437 C179.992714,101.840437 180.552277,105.710747 182.464117,112.145719 C183.396721,115.409836 185.308561,118.953734 186.98725,122.404372 C179.573042,128.419672 175.003279,135.414208 173.37122,139.983971 C170.433515,148.470674 172.718397,152.294353 177.055009,153.180328 C179.013479,153.6 181.811293,152.667395 183.863024,151.781421 C186.474317,150.942077 189.551913,149.496539 192.489617,147.351548 C197.479053,143.66776 202.281967,138.538434 202.002186,131.590528 C201.862295,128.419672 201.022951,125.295446 199.857195,122.264481 C206.152277,119.653188 214.265938,118.20765 224.617851,119.420036 C246.813843,122.03133 251.197086,135.88051 250.357741,141.70929 C249.518397,147.538069 244.855373,150.708925 243.316576,151.68816 C241.777778,152.667395 241.264845,152.993807 241.404736,153.69326 C241.591257,154.719126 242.337341,154.672495 243.642987,154.485974 C245.461566,154.159563 255.300546,149.776321 255.720219,139.051366 C256.419672,125.342077 243.363206,110.37377 220.281239,110.513661 L220.281239,110.513661 Z M49.0550091,168.241894 C41.6874317,176.262295 31.4287796,179.29326 26.9989071,176.728597 C22.242623,173.977413 24.1078324,162.133333 33.1540984,153.64663 C38.6564663,148.470674 45.7442623,143.66776 50.4539162,140.730055 C51.5264117,140.077231 53.1118397,139.144627 55.0236794,137.978871 C55.3500911,137.79235 55.536612,137.699089 55.536612,137.699089 L55.536612,137.699089 C55.9096539,137.465938 56.2826958,137.232787 56.6557377,136.999636 C59.9664845,149.123497 56.7956284,159.801821 49.0550091,168.241894 L49.0550091,168.241894 Z M102.679781,131.777049 C100.115118,138.025501 94.7526412,154.019672 91.4885246,153.133698 C88.6907104,152.387614 86.9653916,140.263752 90.9289617,128.279781 C92.9340619,122.264481 97.1774135,115.083424 99.648816,112.28561 C103.659016,107.809107 108.088889,106.31694 109.161384,108.135519 C110.513661,110.513661 104.265209,127.860109 102.679781,131.777049 L102.679781,131.777049 Z M146.931876,152.947177 C145.859381,153.50674 144.833515,153.879781 144.367213,153.6 C144.040801,153.413479 144.833515,152.667395 144.833515,152.667395 C144.833515,152.667395 150.382514,146.698725 152.574135,143.994171 C153.833151,142.408743 155.325319,140.543534 156.910747,138.445173 L156.910747,139.051366 C156.910747,146.185792 150.009472,150.988707 146.931876,152.947177 L146.931876,152.947177 Z M181.065209,145.159927 C180.272495,144.600364 180.412386,142.735155 183.07031,136.906375 C184.096175,134.621494 186.520947,130.797814 190.671038,127.114026 C191.137341,128.606193 191.463752,130.05173 191.417122,131.404007 C191.370492,140.403643 184.935519,143.76102 181.065209,145.159927 L181.065209,145.159927 Z">
+                                    </path>
+                                </g>
+                            </svg>
+                            <p>SASS</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.142 10.843c0-.64.098-1.018.098-1.707 0-1.067-.393-1.411-1.263-1.411h-.641v.755h.196c.444 0 .542.147.542.689 0 .509-.049 1.018-.049 1.608 0 .755.246 1.05.739 1.165v.049c-.493.116-.739.411-.739 1.166 0 .591.049 1.067.049 1.608 0 .558-.114.705-.542.705v.017h-.196v.788h.641c.87 0 1.263-.344 1.263-1.411 0-.706-.098-1.067-.098-1.707 0-.345.213-.706.854-.739v-.853c-.642-.016-.854-.377-.854-.722zm-3.299 1.001c-.493-.196-.952-.312-.952-.64 0-.246.197-.395.558-.395.361 0 .689.148 1.05.411l.657-.87c-.409-.313-.968-.641-1.724-.641-1.115 0-1.871.641-1.871 1.544 0 .804.706 1.214 1.298 1.443.508.196 1.001.361 1.001.689 0 .246-.197.41-.641.41-.41 0-.821-.164-1.263-.509l-.657.952c.492.41 1.247.689 1.871.689 1.313 0 2.019-.689 2.019-1.592-.001-.9-.707-1.277-1.346-1.491zm-11.21 1.854c-.114 0-.262-.098-.262-.41V7.725H4.039c-.886 0-1.279.344-1.279 1.411 0 .706.099 1.101.099 1.707 0 .345-.213.706-.854.739v.853c.641.017.854.378.854.723 0 .606-.099.968-.099 1.674 0 1.067.394 1.411 1.264 1.411h.64v-.755h-.197c-.411 0-.542-.164-.542-.706 0-.541.049-1.001.049-1.607 0-.756-.245-1.05-.738-1.165v-.051c.493-.114.738-.409.738-1.165 0-.59-.049-1.066-.049-1.607 0-.542.114-.689.542-.689h.442v4.711c0 1.001.345 1.657 1.346 1.657.313 0 .559-.05.739-.115l-.165-1.066c-.098.013-.146.013-.196.013zm7.238-1.854c-.509-.196-.969-.312-.969-.64 0-.246.197-.395.558-.395.361 0 .689.148 1.051.411l.656-.87c-.41-.313-.968-.641-1.723-.641-1.116 0-1.872.641-1.872 1.544 0 .804.707 1.214 1.297 1.443.51.196 1.002.361 1.002.689 0 .246-.197.41-.641.41-.41 0-.82-.164-1.264-.509l-.64.952c.492.41 1.247.689 1.871.689 1.313 0 2.019-.689 2.019-1.592.001-.9-.705-1.277-1.345-1.491zm-4.842-2.15c-1.198 0-2.347 1.001-2.314 2.577 0 1.624 1.066 2.576 2.479 2.576.591 0 1.247-.214 1.756-.558l-.492-.87c-.36.213-.706.312-1.066.312-.657 0-1.165-.312-1.297-1.066h2.971c.017-.115.049-.345.049-.607.016-1.33-.707-2.364-2.086-2.364zm-.935 2.068c.099-.655.492-.969.951-.969.592 0 .821.411.821.969H8.094z"/>
+                            </svg>
+                            <p>LESS</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg width="120px" height="120px" viewBox="0 -173.5 512 512" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 preserveAspectRatio="xMidYMid">
+                                <g>
+                                    <path d="M157.538462,164.102564 L223.179487,164.102564 L223.179487,131.282051 L288.820513,131.282051 L288.820513,0 L157.538462,0 L157.538462,164.102564 Z M223.179487,32.8205128 L256,32.8205128 L256,98.4615385 L223.179487,98.4615385 L223.179487,32.8205128 Z M315.076923,0 L315.076923,131.282051 L380.717949,131.282051 L380.717949,32.8205128 L413.538462,32.8205128 L413.538462,131.282051 L446.358974,131.282051 L446.358974,32.8205128 L479.179487,32.8205128 L479.179487,131.282051 L512,131.282051 L512,0 L315.076923,0 Z M0,131.282051 L65.6410256,131.282051 L65.6410256,32.8205128 L98.4615385,32.8205128 L98.4615385,131.282051 L131.282051,131.282051 L131.282051,0 L0,0 L0,131.282051 Z"
+                                          fill="url(#gradient)">
+                                    </path>
+                                </g>
+                            </svg>
+                            <p>NPM</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg width="120px" height="120px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <title>file_type_gulp</title>
+                                <path d="M15.942,24.095a15.353,15.353,0,0,1-3.518-.393,6.761,6.761,0,0,1-1.006-.311l.813,1.389.318,4.34c0,.487,1.546.881,3.452.881s3.452-.394,3.452-.881l.252-4.387.769-1.346a6.691,6.691,0,0,1-1.015.315A15.353,15.353,0,0,1,15.942,24.095ZM20.5,9.973a34.285,34.285,0,0,1-4.5.261,34.285,34.285,0,0,1-4.5-.261,8.43,8.43,0,0,1-1.4-.292,2.03,2.03,0,0,1-.345-.143L10.5,16.4q.052-.177.116-.354a6.711,6.711,0,0,1,.3-.707,6.264,6.264,0,0,1,.376-.653,5.049,5.049,0,0,1,.432-.566,3.45,3.45,0,0,1,.47-.445,2.238,2.238,0,0,1,.487-.291,1.235,1.235,0,0,1,.487-.1,1.051,1.051,0,0,1,.538.152,1.541,1.541,0,0,1,.486.492.393.393,0,0,1,.066.154.838.838,0,0,1,.014.147.391.391,0,0,1-.078.257.233.233,0,0,1-.185.094.237.237,0,0,1-.182-.1,1.953,1.953,0,0,1-.188-.295.712.712,0,0,0-.215-.251.453.453,0,0,0-.255-.078.788.788,0,0,0-.457.177,2.652,2.652,0,0,0-.481.468,5.131,5.131,0,0,0-.457.666,6.946,6.946,0,0,0-.386.767,5.477,5.477,0,0,0-.267.774,2.751,2.751,0,0,0-.1.685,1.64,1.64,0,0,0,.014.208.7.7,0,0,0,.052.194.389.389,0,0,0,.1.143.247.247,0,0,0,.166.056.561.561,0,0,0,.257-.076,1.928,1.928,0,0,0,.3-.2,3.741,3.741,0,0,0,.31-.279q.156-.155.29-.315t.238-.306a1.808,1.808,0,0,0,.156-.255l.284-.85a.4.4,0,0,1,.136-.2.3.3,0,0,1,.173-.058.267.267,0,0,1,.085.014.209.209,0,0,1,.13.125.3.3,0,0,1,.02.114,1.653,1.653,0,0,1-.031.326,2.587,2.587,0,0,1-.078.3q-.047.145-.105.291t-.113.306a.694.694,0,0,0-.044.114q-.032.1-.078.241t-.1.324l-.11.365q-.057.186-.108.365t-.093.324l-.069.242c-.018.065-.03.1-.034.116a.753.753,0,0,1-.049.128.848.848,0,0,1-.079.134.488.488,0,0,1-.1.1.186.186,0,0,1-.113.042.159.159,0,0,1-.142-.065.455.455,0,0,1-.044-.239v-.051a.514.514,0,0,1,0-.054A1.283,1.283,0,0,1,12.3,18.8q.043-.159.1-.36t.128-.416q.069-.215.124-.385-.162.181-.351.36a3.788,3.788,0,0,1-.388.322,2.3,2.3,0,0,1-.4.233.947.947,0,0,1-.388.09.694.694,0,0,1-.368-.094c-.019-.011-.036-.024-.053-.037l.415,4.352c.108.271,2.142.936,4.825.936s4.719-.666,4.825-.937l.6-5.174-.143.132a6.253,6.253,0,0,1-.484.41,2.184,2.184,0,0,1-.444.266,1.153,1.153,0,0,1-.464.094.562.562,0,0,1-.359-.1.337.337,0,0,1-.127-.278v-.027a.184.184,0,0,1,0-.031.657.657,0,0,1,.095-.25,2.868,2.868,0,0,1,.2-.293q.116-.152.247-.308t.243-.295a2.847,2.847,0,0,0,.185-.255.383.383,0,0,0,.073-.188.085.085,0,0,0-.031-.069.16.16,0,0,0-.1-.025.573.573,0,0,0-.252.063,1.251,1.251,0,0,0-.257.17,2.324,2.324,0,0,0-.247.244,3.6,3.6,0,0,0-.226.286q-.105.148-.192.3t-.148.277l-.052.112q-.034.072-.073.163t-.084.186q-.044.1-.081.181l-.066.152q-.029.067-.041.092t-.05.123q-.035.09-.081.212l-.1.255-.095.253-.078.21c-.022.06-.037.1-.043.123a1.32,1.32,0,0,1-.072.177.73.73,0,0,1-.095.147.433.433,0,0,1-.122.1.312.312,0,0,1-.154.038.3.3,0,0,1-.182-.052.236.236,0,0,1-.072-.2.631.631,0,0,1,.018-.148,1.322,1.322,0,0,1,.046-.15c.018-.05.037-.1.057-.145s.037-.092.053-.136q.165-.362.336-.725t.328-.72c.022-.05.042-.1.063-.147l-.019.019a4.054,4.054,0,0,1-.4.338,2.1,2.1,0,0,1-.391.233.922.922,0,0,1-.377.087.487.487,0,0,1-.209-.04.349.349,0,0,1-.134-.108.433.433,0,0,1-.072-.163c0-.021-.008-.044-.011-.066-.036.028-.072.055-.108.081a2.192,2.192,0,0,1-.373.215.824.824,0,0,1-.33.081.312.312,0,0,1-.238-.1.482.482,0,0,1-.091-.333,1.824,1.824,0,0,1,.049-.387,1.978,1.978,0,0,1-.2.286,1.741,1.741,0,0,1-.272.264,1.358,1.358,0,0,1-.342.193,1.122,1.122,0,0,1-.412.074.737.737,0,0,1-.194-.025.407.407,0,0,1-.163-.087.436.436,0,0,1-.113-.165.679.679,0,0,1-.043-.259s0-.039.012-.11a2.357,2.357,0,0,1,.078-.336q.066-.23.2-.6t.388-.886a.489.489,0,0,1,.148-.2.308.308,0,0,1,.182-.06.335.335,0,0,1,.089.013.286.286,0,0,1,.086.04.215.215,0,0,1,.064.069.187.187,0,0,1,.024.1.251.251,0,0,1-.009.069.824.824,0,0,1-.066.161q-.05.1-.118.228t-.142.277q-.075.148-.139.307a3.069,3.069,0,0,0-.11.324,1.4,1.4,0,0,0-.052.32.238.238,0,0,0,.031.119.107.107,0,0,0,.1.054.638.638,0,0,0,.379-.13,1.683,1.683,0,0,0,.333-.324,3.108,3.108,0,0,0,.276-.416q.124-.222.206-.407a2.063,2.063,0,0,0,.1-.264,2.626,2.626,0,0,1,.1-.26.8.8,0,0,1,.119-.2.211.211,0,0,1,.168-.08.208.208,0,0,1,.174.083.316.316,0,0,1,.064.2.566.566,0,0,1-.041.179q-.041.114-.1.26t-.136.313q-.073.167-.136.338a3.352,3.352,0,0,0-.1.336,1.26,1.26,0,0,0-.041.306.117.117,0,0,0,.134.13.586.586,0,0,0,.235-.065,1.607,1.607,0,0,0,.295-.183c.026-.02.052-.04.077-.061a2.511,2.511,0,0,1,.1-.327q.107-.282.217-.561l.2-.51.925-2.333a.391.391,0,0,1,.148-.2.354.354,0,0,1,.188-.058.272.272,0,0,1,.172.061.238.238,0,0,1,.078.2.407.407,0,0,1-.026.137,1.664,1.664,0,0,1-.066.156q-.076.17-.182.416t-.226.535q-.121.289-.247.6l-.247.609q-.12.3-.226.562l-.182.461a2.031,2.031,0,0,0-.066.194.713.713,0,0,0-.032.2.177.177,0,0,0,.018.087.073.073,0,0,0,.07.033.4.4,0,0,0,.16-.045,1.638,1.638,0,0,0,.208-.119q.112-.074.232-.17t.24-.2q.119-.1.228-.206t.194-.19a.137.137,0,0,1,.047-.031c.034-.1.066-.2.093-.3q.024-.065.067-.185a2.535,2.535,0,0,1,.1-.235,1.007,1.007,0,0,1,.124-.2A.193.193,0,0,1,19.185,16a.24.24,0,0,1,.177.056.226.226,0,0,1,.055.165.6.6,0,0,1-.006.069c0,.031-.009.065-.015.1s-.013.068-.02.1a.456.456,0,0,1-.02.069q.113-.123.244-.244a2.513,2.513,0,0,1,.272-.219,1.571,1.571,0,0,1,.287-.159.755.755,0,0,1,.293-.061.71.71,0,0,1,.2.029.575.575,0,0,1,.177.085.444.444,0,0,1,.127.141.388.388,0,0,1,.049.2.78.78,0,0,1-.075.317,2.293,2.293,0,0,1-.188.338q-.113.17-.244.331t-.246.293l-.193.224a.338.338,0,0,0-.081.125.1.1,0,0,0,.028.071.128.128,0,0,0,.092.027.352.352,0,0,0,.153-.058,2.6,2.6,0,0,0,.282-.2q.182-.143.461-.383c.128-.11.277-.241.446-.39l.808-7.48a2.024,2.024,0,0,1-.345.143A8.427,8.427,0,0,1,20.5,9.973ZM16,8.2c-3.492,0-6.322.39-6.322.872S12.5,9.942,16,9.942s6.322-.39,6.322-.872S19.488,8.2,16,8.2Zm2.524,1.127c0,.113-.336.2-.751.2s-.751-.092-.751-.2.336-.2.751-.2S18.521,9.212,18.521,9.325Z"
+                                      style="fill:url(#gradient)"/>
+                                <path d="M17.17,9.234a.034.034,0,0,0-.006.018c0,.073.271.132.6.132s.6-.059.6-.132l.79-3.2,3.142-3.317,0,0c.066-.075-.068-.308-.292-.508s-.466-.267-.541-.191l0,0L18.122,5.559Z"
+                                      style="fill:url(#gradient)"/>
+                            </svg>
+                            <p>Gulp</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="m21.62 11.108-8.731-8.729a1.292 1.292 0 0 0-1.823 0L9.257 4.19l2.299 2.3a1.532 1.532 0 0 1 1.939 1.95l2.214 2.217a1.53 1.53 0 0 1 1.583 2.531c-.599.6-1.566.6-2.166 0a1.536 1.536 0 0 1-.337-1.662l-2.074-2.063V14.9c.146.071.286.169.407.29a1.537 1.537 0 0 1 0 2.166 1.536 1.536 0 0 1-2.174 0 1.528 1.528 0 0 1 0-2.164c.152-.15.322-.264.504-.339v-5.49a1.529 1.529 0 0 1-.83-2.008l-2.26-2.271-5.987 5.982c-.5.504-.5 1.32 0 1.824l8.731 8.729a1.286 1.286 0 0 0 1.821 0l8.69-8.689a1.284 1.284 0 0 0 .003-1.822"/>
+                            </svg>
+                            <p>Git</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 1024 1024"
+                                 xmlns="http://www.w3.org/2000/svg" class="icon">
+                                <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"/>
+                            </svg>
+                            <p>GitHub</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
+                                 xmlns="http://www.w3.org/2000/svg"><title>TypeScript icon</title>
+                                <path d="M0 12v12h24V0H0zm19.341-.956c.61.152 1.074.423 1.501.865.221.236.549.666.575.77.008.03-1.036.73-1.668 1.123-.023.015-.115-.084-.217-.236-.31-.45-.633-.644-1.128-.678-.728-.05-1.196.331-1.192.967a.88.88 0 0 0 .102.45c.16.331.458.53 1.39.933 1.719.74 2.454 1.227 2.911 1.92.51.773.625 2.008.278 2.926-.38.998-1.325 1.676-2.655 1.9-.411.073-1.386.062-1.828-.018-.964-.172-1.878-.648-2.442-1.273-.221-.243-.652-.88-.625-.925.011-.016.11-.077.22-.141.108-.061.511-.294.892-.515l.69-.4.145.214c.202.308.643.731.91.872.766.404 1.817.347 2.335-.118a.883.883 0 0 0 .313-.72c0-.278-.035-.4-.18-.61-.186-.266-.567-.49-1.649-.96-1.238-.533-1.771-.864-2.259-1.39a3.165 3.165 0 0 1-.659-1.2c-.091-.339-.114-1.189-.042-1.531.255-1.197 1.158-2.03 2.461-2.278.423-.08 1.406-.05 1.821.053zm-5.634 1.002l.008.983H10.59v8.876H8.38v-8.876H5.258v-.964c0-.534.011-.98.026-.99.012-.016 1.913-.024 4.217-.02l4.195.012z"/>
+                            </svg>
+                            <p>TypeScript</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.77 11.24H9.956V8.202h2.152c1.17 0 1.834.522 1.834 1.466 0 1.008-.773 1.572-2.174 1.572zm.324 1.206H9.957v3.348h2.231c1.459 0 2.232-.585 2.232-1.685s-.795-1.663-2.326-1.663zM24 11.39v1.218c-1.128.108-1.817.944-2.226 2.268-.407 1.319-.463 2.937-.42 4.186.045 1.3-.968 2.5-2.337 2.5H4.985c-1.37 0-2.383-1.2-2.337-2.5.043-1.249-.013-2.867-.42-4.186-.41-1.324-1.1-2.16-2.228-2.268V11.39c1.128-.108 1.819-.944 2.227-2.268.408-1.319.464-2.937.42-4.186-.045-1.3.968-2.5 2.338-2.5h14.032c1.37 0 2.382 1.2 2.337 2.5-.043 1.249.013 2.867.42 4.186.409 1.324 1.098 2.16 2.226 2.268zm-7.927 2.817c0-1.354-.953-2.333-2.368-2.488v-.057c1.04-.169 1.856-1.135 1.856-2.213 0-1.537-1.213-2.538-3.062-2.538h-4.16v10.172h4.181c2.218 0 3.553-1.086 3.553-2.876z"/>
+                            </svg>
+                            <p>Bootstrap</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div data-tilt data-tilt-scale="1.3">
+                            <svg width="120px" height="120px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>webpack</title>
+                                <rect width="24" height="24" fill="none"/>
+                                <path fill="url(#gradient)"
+                                      d="M21,16.5a1,1,0,0,1-.53.88l-7.9,4.44a1,1,0,0,1-1.14,0l-7.9-4.44A1,1,0,0,1,3,16.5v-9a1,1,0,0,1,.53-.88l7.9-4.44a1,1,0,0,1,1.14,0l7.9,4.44A1,1,0,0,1,21,7.5v9M12,4.15,5,8.09v7.82l7,3.94,7-3.94V8.09L12,4.15m0,2.08,4.9,2.83L12,11.89,7.1,9.06,12,6.23m5,8.66L13,17.2V13.62l4-2.31v3.58M11,17.2,7,14.89V11.31l4,2.31Z"/>
+                            </svg>
+                            <p>Node.js</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="services section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Мои услуги</h2>
+            <p>
+                В этом разделе представлены услуги, которые я предлагаю как фронтенд-разработчик. Я специализируюсь на
+                создании современных веб-приложений и интерфейсов, интеграции с backend-частью и обеспечении высокого
+                качества пользовательского опыта.
+            </p>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <div class="row gy-4 mx-2">
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" width="30px" height="30px" viewBox="0 0 30 30"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 24.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5.224-.5.5-.5.5.224.5.5zM23.5 12h2c.277 0 .5.223.5.5s-.223.5-.5.5h-2c-.277 0-.5-.223-.5-.5s.223-.5.5-.5zm-3-2c-.822 0-1.5.678-1.5 1.5v14c0 .822.678 1.5 1.5 1.5h8c.822 0 1.5-.678 1.5-1.5v-14c0-.822-.678-1.5-1.5-1.5zm0 1h8c.286 0 .5.214.5.5v14c0 .286-.214.5-.5.5h-8c-.286 0-.5-.214-.5-.5v-14c0-.286.214-.5.5-.5zM14 19.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5.224-.5.5-.5.5.224.5.5zM1.5 3C.678 3 0 3.678 0 4.5v16c0 .822.678 1.5 1.5 1.5H11v2H9.5c-.277 0-.5.223-.5.5s.223.5.5.5h8c.277 0 .5-.223.5-.5s-.223-.5-.5-.5H16v-2h1.5c.668 0 .656-1 0-1h-16c-.286 0-.5-.214-.5-.5V18h16.5c.277 0 .5-.223.5-.5s-.223-.5-.5-.5H1V4.5c0-.286.214-.5.5-.5h24c.286 0 .5.214.5.5v4c0 .665 1 .657 1 0v-4c0-.822-.678-1.5-1.5-1.5zM12 22h3v2h-3z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=adaptive-sites" class="stretched-link">
+                                Разработка адаптивных и функциональных сайтов
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Создаю современные сайты, которые корректно работают на любых устройствах: настольных
+                            компьютерах, планшетах и мобильных телефонах. Использую HTML5, CSS3, JavaScript, адаптивную
+                            вёрстку и современные практики разработки.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" width="30px" height="30px" viewBox="0 0 24 24" role="img"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.6 11.28v1.44a.48.48 0 0 1-.48.48H8.88a.48.48 0 0 1-.48-.48v-1.44a.48.48 0 0 1 .48-.48h6.24a.48.48 0 0 1 .48.48zM12 15.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm3.12-8.4H8.88a.48.48 0 0 0-.48.48v1.44c0 .265.215.48.48.48h6.24a.48.48 0 0 0 .48-.48V7.68a.48.48 0 0 0-.48-.48zm8.04-3.204-1.716 14.736L11.976 24 2.52 18.732.84 3.996 11.976 0 23.16 3.996zM16.8 6.24a1.44 1.44 0 0 0-1.44-1.44H8.64A1.44 1.44 0 0 0 7.2 6.24v11.52c0 .795.645 1.44 1.44 1.44h6.72a1.44 1.44 0 0 0 1.44-1.44V6.24z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=spa-angular" class="stretched-link">
+                                SPA-приложения на Angular
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Разрабатываю одностраничные приложения (SPA) с высокой производительностью и удобством
+                            использования. Использую Angular, TypeScript и RxJS, создавая масштабируемые интерфейсы и
+                            стабильную архитектуру.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon flex-shrink-0">
+                        <svg class="svg-db" style="width: 30px" version="1.1" id="Icons"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 32 32" xml:space="preserve">
+<style type="text/css">
+	.st0 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+</style>
+                            <ellipse class="st0" cx="14" cy="8" rx="10" ry="5"/>
+                            <circle class="st0" cx="24" cy="23" r="7"/>
+                            <line class="st0" x1="24" y1="20" x2="24" y2="26"/>
+                            <line class="st0" x1="21" y1="23" x2="27" y2="23"/>
+                            <line class="st0" x1="24" y1="16" x2="24" y2="8"/>
+                            <path class="st0" d="M4,8v8c0,2.8,4.5,5,10,5c1.2,0,2.3-0.1,3.4-0.3"/>
+                            <path class="st0" d="M4,16v8c0,2.8,4.5,5,10,5c2,0,3.8-0.3,5.3-0.8"/>
+</svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=api-backend" class="stretched-link">
+                                Интеграция API и взаимодействие с backend
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Реализую подключение фронтенда к backend-части: работа с REST API, авторизация, работа с
+                            данными, обработка ошибок, оптимизация запросов и интеграция с серверной логикой.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" width="30px" height="30px" viewBox="0 0 24 24" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                                <g fill-rule="nonzero">
+                                    <path d="M12.7504563,1.99647641 C13.2282468,1.99647641 13.574986,2.43335822 13.4874777,2.88645921 L13.4619688,2.98364723 L11.7910258,7.99647641 L16.2504563,7.99647641 C16.8745039,7.99647641 17.2105602,8.70340887 16.8605629,9.18357991 L16.791596,9.26577201 L4.79617968,21.765772 C4.28699276,22.2963777 3.42047748,21.8527864 3.5092792,21.1604569 L3.52743318,21.0645747 L5.29445775,13.9964764 L2.75045634,13.9964764 C2.28539113,13.9964764 1.94100631,13.5810185 2.00845127,13.1360882 L2.02931338,13.0404356 L5.02931338,2.54043556 C5.11108511,2.25423452 5.35269589,2.04704044 5.64056072,2.00453066 L5.75045634,1.99647641 L12.7504563,1.99647641 Z M18.1439408,11.3694545 L18.1944704,11.4745438 L21.9441085,20.9703871 C22.0962387,21.3556523 21.9072455,21.7912973 21.5219803,21.9434276 C21.1688206,22.0828803 20.7733277,21.9356946 20.5926857,21.6134429 L20.5489398,21.5212994 L19.551,18.996 L15.441,18.996 L14.4448323,21.5212994 C14.3053795,21.8744592 13.9276956,22.062696 13.5689644,21.9744372 L13.4717917,21.9434276 C13.118632,21.8039749 12.9303952,21.4262909 13.018654,21.0675597 L13.0496636,20.9703871 L16.7993017,11.4745438 C17.0344501,10.8790379 17.8415089,10.8440081 18.1439408,11.3694545 Z M17.496,13.791 L16.033,17.496 L18.959,17.496 L17.496,13.791 Z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=animations-interactivity" class="stretched-link">
+                                Настройка анимаций и интерактивности
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Добавляю современные анимации и micro-interaction элементы через GSAP, AOS или animate.css.
+                            Это улучшает пользовательский опыт и делает интерфейс живым и современным.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" version="1.1"
+                             xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M5,22h13c0.55,0,1-0.45,1-1v-1c0-0.55-0.45-1-1-1s-1,0.45-1,1H6V4h6v5c0,0.55,0.45,1,1,1h4c0,0.55,0.45,1,1,1s1-0.45,1-1V9  c0-0.13-0.03-0.25-0.07-0.36c-0.02-0.04-0.04-0.08-0.07-0.12c-0.03-0.05-0.05-0.11-0.09-0.16l-5-6c-0.01-0.01-0.02-0.02-0.03-0.03  c-0.07-0.07-0.15-0.13-0.23-0.18c-0.03-0.02-0.06-0.05-0.1-0.06C13.28,2.03,13.15,2,13,2H5C4.45,2,4,2.45,4,3v18  C4,21.55,4.45,22,5,22z M14,5.76L15.87,8H14V5.76z"/>
+                            <path d="M8,10h2c0.55,0,1-0.45,1-1s-0.45-1-1-1H8C7.45,8,7,8.45,7,9S7.45,10,8,10z"/>
+                            <path d="M14,11H8c-0.55,0-1,0.45-1,1s0.45,1,1,1h6c0.55,0,1-0.45,1-1S14.55,11,14,11z"/>
+                            <path d="M8,16h4c0.55,0,1-0.45,1-1s-0.45-1-1-1H8c-0.55,0-1,0.45-1,1S7.45,16,8,16z"/>
+                            <path d="M8,19h6c0.55,0,1-0.45,1-1s-0.45-1-1-1H8c-0.55,0-1,0.45-1,1S7.45,19,8,19z"/>
+                            <path d="M20.71,16.29C20.7,16.29,20.7,16.29,20.71,16.29C20.89,15.9,21,15.46,21,15c0-1.66-1.34-3-3-3s-3,1.34-3,3s1.34,3,3,3  c0.46,0,0.9-0.11,1.29-0.3c0,0,0,0.01,0.01,0.01l1,1C20.49,18.9,20.74,19,21,19s0.51-0.1,0.71-0.29c0.39-0.39,0.39-1.02,0-1.41  L20.71,16.29z M18,16c-0.55,0-1-0.45-1-1s0.45-1,1-1s1,0.45,1,1S18.55,16,18,16z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=code-optimization" class="stretched-link">
+                                Оптимизация кода и исправление ошибок
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Повышаю скорость загрузки и стабильность приложений: оптимизация скриптов, устранение багов,
+                            исправление верстки, улучшение производительности и рефакторинг.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" height="30px" width="30px" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24" xml:space="preserve">
+<g>
+	<g>
+		<path d="M17,24V11h6v13H17z M19,13v9h2v-9H19z M15,24H9v-8h6V24z M11,22h2v-4h-2V22z M7,24H1v-6h6V24z M3,22h2v-2H3V22z M1,16v-2
+			c7.8,0,12.8-3.4,16.1-10.9l-4.3,1.7L12,2.9L19.5,0l3,7.2L20.6,8l-1.7-4.2C15.3,12.1,9.6,16,1,16z"/>
+	</g>
+</g>
+</svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=seo-optimization" class="stretched-link">
+                                SEO-оптимизация для улучшения индексации сайтов
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Настраиваю корректную структуру страницы, мета-теги, alt-атрибуты, семантику HTML и
+                            внутреннюю оптимизацию, что улучшает видимость сайта и повышает его позиции в поисковой
+                            выдаче.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="700">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" version="1.1" id="DESIGN" xmlns="http://www.w3.org/2000/svg"
+                             width="30px" height="30px" viewBox="0 0 1800 1800" enable-background="new 0 0 1800 1800"
+                             xml:space="preserve">
+<g id="Layer">
+	<g>
+		<path d="M1541.606,1540.146l0.009-0.008c35.598-35.594,35.598-93.52,0-129.121
+			c-17.24-17.236-40.178-26.745-64.569-26.745c-24.378,0-47.314,9.509-64.564,26.763c-35.588,35.584-35.588,93.51,0.009,129.104
+			C1448.096,1575.73,1506.014,1575.73,1541.606,1540.146z M1440.885,1511.743c-9.656-9.655-14.975-22.498-14.975-36.165
+			c0-13.659,5.318-26.511,14.975-36.167c9.665-9.655,22.512-14.979,36.175-14.979c13.659,0,26.497,5.323,36.161,14.979
+			c19.938,19.945,19.938,52.387-0.008,72.332C1493.271,1531.689,1460.831,1531.681,1440.885,1511.743z"/>
+        <path d="M1700.934,402.736c0.021-0.026,0.047-0.043,0.068-0.065c0.044-0.043,0.083-0.091,0.127-0.134l5.504-5.505
+			l-0.138-0.139c81.836-87.814,80.038-225.814-5.507-311.356c-42.353-42.357-98.664-65.685-158.565-65.685
+			c-57.228,0-111.154,21.339-152.792,60.18l-0.134-0.134l-5.511,5.507c-0.043,0.046-0.09,0.085-0.134,0.131
+			c-0.021,0.021-0.039,0.045-0.061,0.069L66.371,1403.02l0.513,0.513c-7.364,4.749-12.699,12.548-13.98,21.907L9.578,1741.903
+			c-1.319,9.647,1.95,19.347,8.831,26.232c5.875,5.87,13.807,9.108,22.004,9.108c1.402,0,2.813-0.095,4.224-0.286l316.451-43.338
+			c9.365-1.276,17.163-6.617,21.912-13.98l0.512,0.513L1700.934,402.736z M1542.423,82.094c43.272,0,83.954,16.852,114.551,47.452
+			c55.643,55.638,62.276,142.02,19.897,204.983L1451.973,109.64C1478.482,91.724,1509.717,82.094,1542.423,82.094z
+			 M1389.497,167.919l229.113,229.112L383.512,1632.129l-86.195-86.19l991.423-991.409l-59.351-59.342l-991.41,991.418
+			l-83.585-83.586L1389.497,167.919z M76.804,1709.731l35.68-260.604l224.915,224.916L76.804,1709.731z"/>
+        <path d="M506.941,804.479l56.789-56.789l-454.446-454.45l185.432-185.437l87.924,87.932l-63.792,63.783
+			l50.362,50.359l63.792-63.779l51.262,51.258l-63.792,63.788l50.363,50.354l63.797-63.779l51.257,51.267l-94.375,94.353
+			l50.376,50.363l94.362-94.362l62.502,62.498l-63.792,63.801l50.363,50.354l63.792-63.792l0.043,0.047l56.789-56.789
+			L323.106,22.622c-15.682-15.686-41.102-15.686-56.784,0L24.102,264.845c-15.687,15.683-15.687,41.107,0,56.789L506.941,804.479z"
+        />
+        <path d="M1778.944,1478.287c-0.726-0.729-1.478-1.424-2.241-2.085l-505.282-505.273l-151.159,151.159l50.259,50.26
+			l94.371-94.37l428.79,428.782l-185.441,185.432l-479.045-479.041l-56.789,56.798l507.437,507.427
+			c15.682,15.69,41.102,15.69,56.788,0l242.234-242.213c0.021-0.034,0.048-0.052,0.079-0.086
+			C1794.63,1519.402,1794.63,1493.969,1778.944,1478.287z"/>
+	</g>
+</g>
+</svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=ui-ux-improvement" class="stretched-link">
+                                Улучшение UI/UX существующих сайтов
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Анализирую сайт, выявляю слабые элементы, улучшаю структуру, визуал, удобство и скорость
+                            взаимодействия — делаю интерфейсы современными, понятными и удобными в использовании.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="800">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" width="30px" height="30px" viewBox="0 0 30 30"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.5 15c-.822 0-1.5.678-1.5 1.5v.785c-.393.114-.77.267-1.13.465l-.313-.314c-.582-.582-1.54-.582-2.12 0-.583.58-.583 1.54 0 2.12l.313.315c-.2.36-.354.736-.47 1.13h-.78c-.822 0-1.5.678-1.5 1.5s.678 1.5 1.5 1.5h.785c.114.393.267.77.465 1.13l-.314.313c-.582.582-.582 1.54 0 2.12.58.583 1.54.583 2.12 0l.315-.313c.36.2.736.354 1.13.47v.78c0 .822.678 1.5 1.5 1.5s1.5-.678 1.5-1.5v-.785c.393-.114.77-.267 1.13-.465l.313.314c.582.582 1.54.582 2.12 0 .583-.58.583-1.54 0-2.12l-.313-.315c.2-.36.354-.736.47-1.13h.78c.822 0 1.5-.678 1.5-1.5s-.678-1.5-1.5-1.5h-.785c-.114-.393-.267-.77-.465-1.13l.314-.313c.582-.582.582-1.54 0-2.12-.58-.583-1.54-.583-2.12 0l-.315.313c-.36-.2-.736-.354-1.13-.47v-.78c0-.822-.678-1.5-1.5-1.5zm0 1c.286 0 .5.214.5.5v1c0 .328.084.508.38.588.57.115 1.112.34 1.597.66.198.132.462.106.63-.062l.543-.543c.202-.202.505-.202.707 0 .202.202.202.505 0 .707l-.543.543c-.168.167-.195.43-.064.628.32.486.544 1.028.658 1.597.08.302.344.383.592.383h1c.286 0 .5.214.5.5 0 .286-.214.5-.5.5h-1c-.394 0-.528.158-.588.38-.115.57-.34 1.112-.66 1.597-.132.198-.106.462.062.63l.543.543c.202.202.202.505 0 .707-.202.202-.505.202-.707 0l-.543-.543c-.167-.168-.43-.195-.628-.064-.486.32-1.028.544-1.597.658-.264.07-.383.34-.383.592v1c0 .286-.214.5-.5.5-.286 0-.5-.214-.5-.5v-1c0-.37-.138-.523-.38-.588-.57-.115-1.112-.34-1.597-.66-.198-.132-.462-.106-.63.062l-.543.543c-.202.202-.505.202-.707 0-.202-.202-.202-.505 0-.707l.543-.543c.168-.167.195-.43.064-.628-.32-.486-.544-1.028-.658-1.597-.05-.252-.262-.383-.592-.383h-1c-.286 0-.5-.214-.5-.5 0-.286.214-.5.5-.5h1c.445 0 .524-.143.588-.38.115-.57.34-1.112.66-1.597.132-.198.106-.462-.062-.63l-.543-.543c-.202-.202-.202-.505 0-.707.202-.202.505-.202.707 0l.543.543c.167.168.43.195.628.064.486-.32 1.028-.544 1.597-.658.402-.092.383-.406.383-.592v-1c0-.286.214-.5.5-.5zm0 4c-1.375 0-2.5 1.125-2.5 2.5s1.125 2.5 2.5 2.5 2.5-1.125 2.5-2.5-1.125-2.5-2.5-2.5zm0 1c.834 0 1.5.666 1.5 1.5s-.666 1.5-1.5 1.5-1.5-.666-1.5-1.5.666-1.5 1.5-1.5zm-10-13C10.02 8 8 10.02 8 12.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5S14.98 8 12.5 8zm0 1c1.94 0 3.5 1.56 3.5 3.5S14.44 16 12.5 16 9 14.44 9 12.5 10.56 9 12.5 9zm-1-9c-.822 0-1.5.678-1.5 1.5v1.91c-.763.21-1.494.51-2.182.9L5.943 2.437c-.582-.582-1.54-.582-2.123 0L2.406 3.85c-.58.58-.58 1.54 0 2.12l1.887 1.887c-.382.677-.68 1.394-.887 2.143H1.5c-.822 0-1.5.678-1.5 1.5v2c0 .822.678 1.5 1.5 1.5h1.908c.207.757.507 1.48.893 2.164l-1.894 1.893c-.582.582-.582 1.54 0 2.123l1.414 1.414c.582.582 1.54.582 2.123 0l1.897-1.9c.68.39 1.404.69 2.16.898V23.5c0 .822.678 1.5 1.5 1.5h2c.664 0 .66-1 0-1h-2c-.286 0-.5-.214-.5-.5v-2.234c0-.234-.16-.437-.39-.49-.93-.212-1.82-.58-2.63-1.09-.196-.124-.452-.095-.617.068l-.006.01-.003.004-2.118 2.12c-.2.2-.507.2-.71 0l-1.413-1.415c-.2-.202-.2-.508 0-.71l2.123-2.12.004-.004.002-.003c.162-.165.19-.42.067-.616-.508-.81-.874-1.7-1.085-2.63-.052-.23-.255-.39-.49-.39H1.5c-.286 0-.5-.214-.5-.5v-2c0-.286.214-.5.5-.5h2.234c.234 0 .437-.16.49-.39.21-.923.574-1.806 1.077-2.61.125-.198.095-.454-.07-.62L3.113 5.265c-.202-.202-.202-.505 0-.707l1.414-1.414c.202-.202.508-.202.71 0L7.34 5.248c.165.165.42.194.62.07.814-.512 1.71-.88 2.647-1.093.228-.052.39-.255.39-.49V1.5c0-.286.214-.5.5-.5h2c.286 0 .5.214.5.5v2.234c0 .234.16.437.39.49.93.212 1.817.58 2.626 1.089.197.123.454.094.62-.07l2.1-2.1c.202-.202.505-.202.707 0l1.414 1.414c.202.202.202.505 0 .707L19.764 7.36c-.165.164-.194.42-.07.62.506.81.87 1.697 1.08 2.63.053.228.256.39.49.39H23.5c.286 0 .5.214.5.5v2c0 .668 1 .652 1 0v-2c0-.822-.678-1.5-1.5-1.5h-1.908c-.207-.756-.505-1.48-.89-2.164l1.862-1.865c.582-.58.582-1.54 0-2.12L21.15 2.436c-.58-.582-1.54-.582-2.12 0l-1.87 1.87c-.68-.39-1.405-.69-2.16-.898V1.5c0-.822-.678-1.5-1.5-1.5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=refactoring" class="stretched-link">
+                                Рефакторинг и повышение стабильности проекта
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Привожу существующий код в порядок: типизация, улучшение архитектуры, устранение
+                            хаотичности, оптимизация структуры, повышение предсказуемости, стабильности и качества
+                            проекта.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="900">
+                    <div class="icon flex-shrink-0">
+                        <svg fill="#fff" width="50px" height="50px" viewBox="0 0 1000 1000" version="1.1"
+                             xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M818.596,221.014H181.404c-16.569,0-30,13.431-30,30v93.212h697.192v-93.212   C848.596,234.445,835.165,221.014,818.596,221.014z M635.371,295.12h-28c-6.875,0-12.5-5.625-12.5-12.5s5.625-12.5,12.5-12.5h28   c6.875,0,12.5,5.625,12.5,12.5S642.246,295.12,635.371,295.12z M718.871,295.12h-28c-6.875,0-12.5-5.625-12.5-12.5   s5.625-12.5,12.5-12.5h28c6.875,0,12.5,5.625,12.5,12.5S725.746,295.12,718.871,295.12z M802.371,295.12h-28   c-6.875,0-12.5-5.625-12.5-12.5s5.625-12.5,12.5-12.5h28c6.875,0,12.5,5.625,12.5,12.5S809.246,295.12,802.371,295.12z"/>
+    <path d="M799.702,565.448c1.441-1.431,2.161-3.229,2.161-5.392c0-2.036-0.72-3.785-2.161-5.249   c-1.441-1.463-3.215-2.195-5.327-2.195h-9.215v14.984h9.215C796.487,567.596,798.262,566.88,799.702,565.448z"/>
+    <path d="M198.647,524.545c2.072-0.769,3.864-1.857,5.378-3.264c1.513-1.405,2.709-3.064,3.585-4.974   c0.876-1.91,1.315-4.006,1.315-6.288c0-2.387-0.439-4.549-1.315-6.487c-0.876-1.936-2.084-3.595-3.625-4.974   c-1.541-1.379-3.346-2.454-5.417-3.223c-2.072-0.769-4.275-1.155-6.612-1.155h-6.293v31.518h6.293   C194.345,525.698,196.575,525.314,198.647,524.545z"/>
+    <path d="M779.113,507.685c1.818,1.851,3.938,3.301,6.363,4.353c2.423,1.052,5.071,1.579,7.941,1.579   c2.87,0,5.533-0.526,7.989-1.579c2.455-1.052,4.607-2.503,6.458-4.353c1.849-1.85,3.301-4.019,4.353-6.506   c1.052-2.488,1.579-5.134,1.579-7.941c0-2.806-0.543-5.454-1.626-7.941c-1.085-2.488-2.552-4.655-4.401-6.506   c-1.851-1.849-4.018-3.316-6.506-4.401c-2.488-1.084-5.104-1.626-7.845-1.626c-2.87,0-5.534,0.559-7.989,1.674   c-2.456,1.117-4.577,2.616-6.362,4.497c-1.786,1.882-3.19,4.083-4.21,6.602c-1.021,2.52-1.531,5.151-1.531,7.893   c0,2.807,0.51,5.422,1.531,7.845C775.875,503.699,777.295,505.835,779.113,507.685z"/>
+    <path d="M151.404,748.986c0,16.569,13.431,30,30,30h637.192c16.569,0,30-13.431,30-30v-379.76H151.404   V748.986z M812.565,675.556c-1.208,2.485-2.78,4.556-4.711,6.213c-1.933,1.657-4.108,2.899-6.524,3.728   c-2.417,0.828-4.867,1.243-7.352,1.243c-2.899,0-5.643-0.517-8.232-1.553c-2.589-1.036-4.851-2.382-6.783-4.038   c-1.933-1.657-3.469-3.521-4.608-5.592c-1.139-2.071-1.709-4.142-1.709-6.213c0-2.002,0.621-3.537,1.864-4.608   c1.243-1.069,2.657-1.605,4.246-1.605c1.38,0,2.64,0.38,3.779,1.139c1.139,0.76,1.88,2.003,2.226,3.728   c0.345,2.003,1.38,3.573,3.107,4.712c1.725,1.139,3.762,1.708,6.109,1.708c2.001,0,3.831-0.603,5.488-1.812   c1.657-1.207,2.485-3.055,2.485-5.54c0-2.001-0.45-3.64-1.346-4.919c-0.898-1.276-2.055-2.398-3.469-3.365   c-1.416-0.966-2.951-1.846-4.608-2.641c-1.657-0.793-3.21-1.673-4.66-2.641c-1.45-0.966-2.865-2.087-4.246-3.365   c-1.382-1.277-2.624-2.692-3.728-4.246c-1.105-1.553-1.985-3.21-2.64-4.97c-0.657-1.76-0.984-3.641-0.984-5.643   c0-2.83,0.534-5.297,1.605-7.404c1.07-2.105,2.45-3.865,4.142-5.281c1.691-1.414,3.589-2.468,5.695-3.158   c2.105-0.689,4.228-1.036,6.368-1.036c2.071,0,4.158,0.363,6.265,1.088c2.105,0.725,3.987,1.76,5.644,3.107   c1.657,1.346,3.003,2.951,4.038,4.815c1.035,1.864,1.553,3.935,1.553,6.213c0,1.796-0.605,3.331-1.812,4.608   c-1.209,1.278-2.676,1.916-4.401,1.916c-1.589,0-2.935-0.448-4.038-1.346c-1.105-0.896-1.76-2.346-1.967-4.349   c-0.139-1.243-0.795-2.175-1.968-2.796c-1.175-0.621-2.314-0.932-3.417-0.932c-1.726,0-3.021,0.45-3.883,1.346   c-0.864,0.898-1.294,1.968-1.294,3.21c0,1.589,0.379,2.917,1.139,3.987c0.759,1.071,1.725,2.003,2.9,2.796   c1.173,0.794,2.449,1.519,3.831,2.174c1.38,0.657,2.657,1.33,3.831,2.02c1.932,1.174,3.744,2.485,5.436,3.935   c1.691,1.45,3.158,3.038,4.401,4.763c1.243,1.726,2.226,3.573,2.951,5.54c0.725,1.967,1.087,4.09,1.087,6.368   C814.378,670.172,813.772,673.071,812.565,675.556z M773.899,596.227V548.03c0-4.453,2.258-6.681,6.776-6.681h13.648   c2.544,0,4.963,0.494,7.253,1.479c2.291,0.987,4.295,2.338,6.013,4.056c1.718,1.718,3.069,3.722,4.056,6.013   c0.986,2.291,1.479,4.71,1.479,7.254c0,2.61-0.495,5.043-1.485,7.301c-0.99,2.259-2.346,4.247-4.07,5.965   c-1.724,1.718-3.736,3.07-6.034,4.056c-2.298,0.987-4.724,1.479-7.277,1.479h-9.098v17.275c0,3.818-1.861,5.727-5.583,5.727   C775.792,601.954,773.899,600.045,773.899,596.227z M764.044,481.23c1.594-3.858,3.811-7.255,6.649-10.19   c2.837-2.933,6.171-5.262,9.998-6.984c3.827-1.722,7.972-2.584,12.438-2.584c4.593,0,8.85,0.846,12.773,2.536   c3.923,1.691,7.334,3.971,10.237,6.841c2.902,2.87,5.167,6.236,6.793,10.094c1.627,3.86,2.44,7.957,2.44,12.294   c0,4.401-0.83,8.532-2.487,12.39c-1.66,3.86-3.923,7.224-6.793,10.094c-2.87,2.87-6.235,5.119-10.094,6.745   c-3.86,1.626-7.989,2.44-12.39,2.44c-4.401,0-8.548-0.813-12.438-2.44c-3.891-1.627-7.271-3.858-10.142-6.697   c-2.87-2.838-5.151-6.171-6.841-9.998c-1.691-3.827-2.536-7.941-2.536-12.342C761.652,489.156,762.449,485.09,764.044,481.23z    M233.342,566.248c0-10.098,7.265-18.732,17.215-20.457l11.216-1.945c3.372-14.611,9.142-28.301,16.859-40.65l-6.569-9.325   c-5.816-8.255-4.848-19.497,2.292-26.638l11.113-11.113c7.14-7.14,18.383-8.108,26.638-2.293l9.326,6.57   c12.349-7.717,26.04-13.487,40.65-16.859l1.945-11.216c1.725-9.949,10.359-17.215,20.457-17.215H400.2   c10.098,0,18.732,7.265,20.457,17.215l1.946,11.222c20.773,4.796,39.699,14.419,55.529,27.633l-1.58,1.92   c-13.04,15.82-22.81,33.99-28.89,53.37c-13.39-15.53-33.2-25.36-55.32-25.36c-40.31,0-73,32.68-73,73c0,40.31,32.69,73,73,73   c22.12,0,41.93-9.83,55.32-25.36c10.89-12.65,17.53-29.07,17.67-47.03v-1.22c0.14-32.08,11.56-61.5,30.51-84.5   c5.33-6.48,11.26-12.45,17.7-17.83c15.83-13.207,34.756-22.828,55.529-27.624l1.946-11.222   c1.725-9.949,10.359-17.215,20.457-17.215h15.716c10.098,0,18.732,7.265,20.457,17.215l1.945,11.216   c14.61,3.372,28.301,9.142,40.65,16.859l9.326-6.57c8.255-5.815,19.498-4.848,26.638,2.293l11.113,11.113   c7.14,7.141,8.108,18.383,2.292,26.638l-6.569,9.325c7.717,12.349,13.487,26.04,16.859,40.65l11.216,1.945   c9.95,1.725,17.215,10.359,17.215,20.457v15.716c0,10.098-7.265,18.732-17.215,20.457l-11.217,1.945   c-3.373,14.609-9.143,28.3-16.86,40.648l6.571,9.327c5.815,8.255,4.848,19.497-2.292,26.638l-11.113,11.113   c-7.14,7.14-18.383,8.108-26.638,2.292l-9.327-6.57c-12.349,7.717-26.039,13.487-40.648,16.86l-1.945,11.217   c-1.725,9.949-10.359,17.215-20.457,17.215h-15.716c-10.098,0-18.732-7.265-20.457-17.215l-1.946-11.222   c-20.773-4.796-39.7-14.416-55.529-27.624l1.6-1.94c13.03-15.82,22.79-33.99,28.88-53.36c13.38,15.53,33.19,25.36,55.31,25.36   c40.31,0,72.99-32.69,72.99-73c0-40.32-32.68-73-72.99-73c-22.12,0-41.93,9.83-55.31,25.36c-10.9,12.64-17.54,29.06-17.68,47.03   v1.22c-0.14,32.08-11.56,61.5-30.5,84.5c-5.34,6.48-11.27,12.45-17.71,17.82c-15.829,13.214-34.755,22.837-55.529,27.633   l-1.946,11.222c-1.725,9.949-10.359,17.215-20.457,17.215h-15.716c-10.098,0-18.732-7.265-20.457-17.215l-1.945-11.217   c-14.609-3.373-28.299-9.143-40.648-16.86l-9.328,6.57c-8.255,5.816-19.498,4.848-26.638-2.292l-11.113-11.113   c-7.14-7.141-8.108-18.383-2.292-26.638l6.571-9.327c-7.717-12.348-13.487-26.039-16.86-40.648l-11.217-1.945   c-9.95-1.725-17.215-10.359-17.215-20.457V566.248z M176.295,489.417c0-1.323,0.437-2.434,1.31-3.334   c0.873-0.899,1.997-1.35,3.374-1.35h11.909c3.652,0,7.038,0.662,10.162,1.985c3.122,1.323,5.835,3.124,8.137,5.399   c2.302,2.276,4.101,4.949,5.398,8.019c1.296,3.07,1.945,6.351,1.945,9.844c0,3.811-0.715,7.264-2.144,10.361   c-1.429,3.096-3.362,5.743-5.795,7.939c-2.435,2.197-5.267,3.89-8.495,5.081c-3.229,1.191-6.643,1.786-10.241,1.786h-10.877   c-1.377,0-2.501-0.449-3.374-1.35c-0.873-0.899-1.31-2.011-1.31-3.334V489.417z M207.416,568.58c1.322,0,2.447,0.447,3.374,1.339   c0.925,0.893,1.389,1.994,1.389,3.307c0,1.207-0.464,2.309-1.389,3.306c-0.927,0.997-2.052,1.496-3.374,1.496h-16.593v13.338   h17.704c1.27,0,2.355,0.46,3.255,1.378c0.899,0.918,1.35,2.059,1.35,3.424c0,1.313-0.45,2.415-1.35,3.307   c-0.9,0.893-1.985,1.338-3.255,1.338H186.1c-1.365,0-2.48-0.449-3.346-1.35c-0.866-0.899-1.299-2.01-1.299-3.334v-41.045   c0-1.323,0.433-2.434,1.299-3.335c0.866-0.899,1.981-1.35,3.346-1.35h22.507c1.322,0,2.447,0.45,3.374,1.35   c0.925,0.901,1.389,2.012,1.389,3.335c0,1.323-0.464,2.448-1.389,3.374c-0.927,0.927-2.052,1.389-3.374,1.389h-17.784v8.733   H207.416z M176.017,614.456c0.926-0.925,2.051-1.389,3.374-1.389c0.899,0,1.747,0.252,2.54,0.754   c0.794,0.503,1.429,1.284,1.905,2.342l13.417,31.359l13.814-31.439c0.476-1.058,1.124-1.826,1.945-2.302   c0.82-0.476,1.68-0.715,2.58-0.715c1.163,0,2.223,0.385,3.176,1.151c0.953,0.768,1.429,1.814,1.429,3.136   c-0.107,0.371-0.186,0.742-0.238,1.112c-0.053,0.371-0.133,0.768-0.238,1.191l-17.783,40.648c-0.424,0.9-1.006,1.655-1.747,2.263   c-0.742,0.609-1.721,0.913-2.938,0.913c-1.111,0-2.024-0.304-2.739-0.913c-0.714-0.608-1.284-1.389-1.707-2.342l-17.466-39.854   c-0.265-0.476-0.45-0.939-0.556-1.389c-0.107-0.449-0.159-0.886-0.159-1.31C174.628,616.454,175.09,615.382,176.017,614.456z"/>
+</g>
+</svg>
+                    </div>
+                    <div>
+                        <h4 class="title">
+                            <a href="service-details.html?id=maintenance" class="stretched-link">
+                                Поддержка и развитие веб-приложений
+                            </a>
+                        </h4>
+                        <p class="description">
+                            Помогаю развивать проект после запуска: добавление новых страниц, улучшений, секций,
+                            оптимизация логики, исправление ошибок и поддержание стабильной работы приложения.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Контакты</h2>
+            <p>Напишите мне письмо, если Вам интересно сотрудничество со мной</p>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-lg-5">
+                    <div class="info-wrap">
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                            <i aria-hidden="true" class="bi bi-geo-alt flex-shrink-0"></i>
+                            <div>
+                                <h3>Адрес</h3>
+                                <p>город Москва, Россия</p>
+                            </div>
+                        </div>
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                            <i aria-hidden="true" class="bi bi-telephone flex-shrink-0"></i>
+                            <div>
+                                <h3>Мой номер телефона</h3>
+                                <p>+7 (993) 606-71-83</p>
+                            </div>
+                        </div>
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                            <i aria-hidden="true" class="bi bi-envelope flex-shrink-0"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>webbuilding.moscow@yandex.com</p>
+                            </div>
+                        </div>
+                        <div class="map-frame" data-aos="fade-up" data-aos-delay="500">
+                            <iframe title="My Location"
+                                    src="https://yandex.ru/map-widget/v1/?ll=37.628196%2C55.750365&z=14.6"
+                                    frameborder="1" allowfullscreen="true"
+                                    style="position:relative;" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <form action="assets/forms/contact.php" method="post" id="php-form" class="php-email-form"
+                          data-aos="fade-up"
+                          data-aos-delay="200" novalidate>
+                        <div class="row gy-4">
+                            <div class="col-md-6">
+                                <label for="name" class="pb-2">Ваше имя</label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                       pattern=".{3,50}" required minlength="3" maxlength="50">
+                                <div class="invalid-feedback">Заполните поле. Минимальная длина - 3 символа.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="pb-2">Ваш Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
+                                <div class="invalid-feedback">Заполните поле. Пример корректного email:
+                                    example@mail.com
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="subject" class="pb-2">Тема</label>
+                                <input type="text" class="form-control" name="subject" id="subject"
+                                       pattern=".{,100}" required maxlength="100">
+                                <div class="invalid-feedback">Заполните поле. Максимальная длина - 100 символов.</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="message-field" class="pb-2">Содержание</label>
+                                <textarea class="form-control" name="message" rows="10" id="message-field"
+                                          required maxlength="700"></textarea>
+                                <div class="invalid-feedback">Заполните поле. Максимальная длина - 700 символов.</div>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Ваше сообщение было отправлено. Спасибо!</div>
+                                <button type="submit">Отправить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+        <p class="copyright text-center">
+            ©<span class="mx-1"><script>document.write(new Date().getFullYear())</script></span>Oleg Galuzinskiy.
+            <span>Frontend Developer</span>
+        </p>
+    </div>
+</footer>
+
+<a aria-hidden="true" href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<% const criticalJs = pick(assets.js, '/critical.min.js'); %>
+<% const asyncJs = pick(assets.js, '/async.min.js'); %>
+<% if (criticalJs) { %>
+<script src="<%= criticalJs %>" defer></script>
+<% } %>
+<% if (asyncJs) { %>
+<script>
+    (function () {
+        const load = function () {
+            let s = document.createElement('script');
+            s.src = "<%= asyncJs %>";
+            s.defer = true;
+            document.body.appendChild(s);
+        };
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(load, {timeout: 1500});
+        } else {
+            window.addEventListener('DOMContentLoaded', load);
+        }
+    })();
+</script>
+<% } %>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title data-project-page-title-1></title>
+    <meta name="description" data-project-meta-description-1>
+    <meta name="keywords"
+          content="фронтенд разработчик, портфолио frontend, веб разработчик, HTML CSS JavaScript, верстка сайтов, лендинги, UI UX, frontend developer portfolio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" data-project-page-title-2>
+    <meta property="og:description" data-project-meta-description-2>
+    <meta property="og:url" data-project-meta-url>
+    <meta property="og:image" content="https://modernstack.ru/assets/img/og-preview.webp">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Олег Галузинский">
+    <meta name="theme-color" content="#050d18">
+    <link href="assets/img/logotype.png" rel="icon">
+
+    <% const criticalCss = pick(assets.css, '/critical.min.css'); %>
+    <% const asyncCss = pick(assets.css, '/async.min.css'); %>
+    <% if (criticalCss) { %>
+    <link rel="stylesheet" href="<%= criticalCss %>">
+    <% } %>
+    <% if (asyncCss) { %>
+    <link rel="preload" href="<%= asyncCss %>" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="<%= asyncCss %>">
+    </noscript>
+    <% } %>
+</head>
+
+<body class="portfolio-details-page">
+<i aria-hidden="true" class="header-toggle d-xl-none bi bi-list"></i>
+<header id="header" class="header dark-background d-flex flex-column">
+    <div class="profile-img">
+        <img src="assets/img/my-profile-img.webp" alt="Profile image" loading="eager" fetchpriority="high"
+             class="img-fluid rounded-circle">
+    </div>
+
+    <a aria-label="Главная страница" href="index.html" class="logo d-flex align-items-center justify-content-center">
+        <svg class="me-2" width="40" height="26" viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="OG logo">
+            <defs>
+                <style>
+                    .og-shape {
+                        stroke: #7A39FF;
+                        fill: none;
+                        stroke-width: 1.5;
+                    }
+
+                    .og-text {
+                        fill: #7A39FF;
+                        font-family: "Roboto", sans-serif;
+                        font-weight: 500;
+                        font-size: 12px;
+                        letter-spacing: 0.12em;
+                    }
+                </style>
+            </defs>
+            <rect class="og-shape" x="1" y="1" width="38" height="24" rx="7" ry="7"/>
+            <text class="og-text" x="52%" y="53%" text-anchor="middle" dominant-baseline="middle">O•G</text>
+        </svg>
+        <h1>Олег Галузинский</h1>
+    </a>
+    <div class="social-links text-center">
+        <a aria-label="Ссылка на профиль GitHub" href="https://github.com/Oleg-Frontend-creator">
+            <i aria-hidden="true" class="bi bi-github"></i>
+        </a>
+        <a aria-label="Ссылка на профиль WhatsApp" href="https://wa.me/79936067183">
+            <i aria-hidden="true" class="bi bi-whatsapp"></i>
+        </a>
+        <a aria-label="Ссылка на профиль Telegram" href="https://t.me/webbuilding_moscow">
+            <i aria-hidden="true" class="bi bi-telegram"></i>
+        </a>
+        <a aria-label="Ссылка на email почту" href="mailto:webbuilding.moscow@yandex.com">
+            <i aria-hidden="true" class="bi bi-envelope-at"></i>
+        </a>
+        <a aria-label="Ссылка для скачивания pdf-портфолио" href="assets/Oleg_Galuzinsky_Frontend_Portfolio_2026.pdf"
+           download>
+            <i aria-hidden="true" class="bi bi-filetype-pdf"></i>
+        </a>
+    </div>
+    <nav id="navmenu" class="navmenu">
+        <ul>
+            <li>
+                <a href="index.html#hero"><i aria-hidden="true" class="bi bi-house navicon"></i>Главная</a>
+            </li>
+            <li>
+                <a href="index.html#about"><i aria-hidden="true" class="bi bi-person navicon"></i>Обо мне</a>
+            </li>
+            <li>
+                <a href="index.html#stats"><i aria-hidden="true" class="bi bi-bar-chart navicon"></i>Статистика</a>
+            </li>
+            <li>
+                <a href="index.html#skills"><i aria-hidden="true" class="bi bi-code-slash navicon"></i>Навыки</a>
+            </li>
+            <li>
+                <a href="index.html#resume"><i aria-hidden="true" class="bi bi-file-earmark-text navicon"></i>Резюме</a>
+            </li>
+            <li>
+                <a href="index.html#portfolio"><i aria-hidden="true" class="bi bi-images navicon"></i>Портфолио</a>
+            </li>
+            <li>
+                <a href="index.html#technologies"><i aria-hidden="true"
+                                                     class="bi bi-gear-wide-connected navicon"></i>Технологии</a>
+            </li>
+            <li>
+                <a href="index.html#services"><i aria-hidden="true" class="bi bi-hdd-stack navicon"></i>Услуги</a>
+            </li>
+            <li>
+                <a href="index.html#contact"><i aria-hidden="true" class="bi bi-envelope navicon"></i>Контакты</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+    <header class="page-title dark-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+            <h1 class="mb-2 mb-lg-0" data-project-title></h1>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="index.html#portfolio">Главная</a></li>
+                    <li class="current">Детали проекта</li>
+                </ol>
+                <div class="items-nav" data-portfolio-nav></div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="portfolio-details" class="portfolio-details section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper init-swiper">
+                        <script type="application/json" class="swiper-config">
+                            {
+                                "loop": true,
+                                "speed": 600,
+                                "autoplay": {
+                                    "delay": 5000
+                                },
+                                "slidesPerView": "auto",
+                                "pagination": {
+                                    "el": ".swiper-pagination",
+                                    "type": "bullets",
+                                    "clickable": true
+                                }
+                            }
+                        </script>
+
+                        <div class="swiper-wrapper align-items-center" data-project-gallery></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Краткая информация о проекте</h3>
+                        <ul>
+                            <li><strong>Категория: </strong><span data-project-category></span></li>
+                            <li><strong>Дата: </strong><span data-project-date></span></li>
+                            <li><strong>Проект: </strong><a data-project-url target="_blank">Открыть</a></li>
+                            <li><strong>GitHub: </strong><a data-project-github target="_blank">Открыть</a></li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+                        <h2>Описание проекта</h2>
+                        <p data-project-description></p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="accordion arrows d-lg-block d-none row gy-4">
+                <input type="radio" name="accordion" id="cb1"/>
+                <div class="box">
+                    <label class="box-title portfolio-box-title" for="cb1">Подробности разработки</label>
+                    <label class="box-close" for="acc-close-1"></label>
+                    <div class="box-content box-content-columns">
+                        <div class="accordion-column">
+                            <h2>Технологии</h2>
+                            <ul data-project-techstack-1></ul>
+                        </div>
+                        <div class="accordion-column">
+                            <h2>Что было сложнее всего</h2>
+                            <p data-project-difficulty-1></p>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="accordion" id="acc-close-1"/>
+            </nav>
+
+            <nav class="accordion arrows d-lg-none d-block row gy-4">
+                <header class="box">
+                    <label for="acc-close-2" class="box-title portfolio-box-title">Подробности разработки</label>
+                </header>
+                <input type="radio" name="accordion" id="cb2"/>
+                <div class="box">
+                    <label class="box-title" for="cb2">Технологии</label>
+                    <label class="box-close" for="acc-close-2"></label>
+                    <div class="box-content">
+                        <div class="portfolio-description">
+                            <ul data-project-techstack-2></ul>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="accordion" id="cb3"/>
+                <div class="box">
+                    <label class="box-title" for="cb3">Что было сложнее всего</label>
+                    <label class="box-close" for="acc-close-2"></label>
+                    <div class="box-content">
+                        <div class="portfolio-description">
+                            <p data-project-difficulty-2></p>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="accordion" id="acc-close-2"/>
+            </nav>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer id="footer" class="footer position-relative light-background">
+
+    <div class="container">
+        <p class="copyright text-center">
+            ©<span class="mx-1"><script>document.write(new Date().getFullYear())</script></span>Oleg Galuzinskiy.
+            <span>Frontend Developer</span>
+        </p>
+    </div>
+
+</footer>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<% const criticalJs = pick(assets.js, '/critical.min.js'); %>
+<% const asyncJs = pick(assets.js, '/async.min.js'); %>
+
+<!-- Critical JS: defer -->
+<% if (criticalJs) { %>
+<script src="<%= criticalJs %>" defer></script>
+<% } %>
+
+<!-- Async JS -->
+<% if (asyncJs) { %>
+<script>
+    (function () {
+        const load = function () {
+            let s = document.createElement('script');
+            s.src = "<%= asyncJs %>";
+            s.defer = true;
+            document.body.appendChild(s);
+        };
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(load, {timeout: 1500});
+        } else {
+            window.addEventListener('DOMContentLoaded', load);
+        }
+    })();
+</script>
+<% } %>
+</body>
+</html>

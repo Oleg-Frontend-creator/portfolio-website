@@ -1,0 +1,51 @@
+@import "../common-hero";
+
+.portfolio-details {
+  .portfolio-details-slider {
+    img {
+      width: 100%;
+    }
+
+    .swiper-pagination {
+      margin-top: 20px;
+      position: relative;
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+        opacity: 1;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: var(--accent-color);
+      }
+    }
+  }
+}
+
+.page-title h1 {
+  max-width: 800px;
+}
+
+.container {
+  max-width: 100%;
+}
+
+@media (max-width: 540px) {
+  .accordion .box {
+    .box-title {
+      width: 100%;
+      font-size: 18px;
+
+      &:not(header .box-title) {
+        font-size: 16px;
+      }
+    }
+
+    .box-content {
+      width: 100%;
+      padding: 0;
+    }
+  }
+}
