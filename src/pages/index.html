@@ -20,30 +20,31 @@
     <meta name="theme-color" content="#050d18">
     <link href="assets/img/logotype.png" rel="icon">
 
-    <% const criticalCss = pick(assets.css, '/critical.min.css'); %>
-    <% const asyncCss = pick(assets.css, '/async.min.css'); %>
-    <% if (criticalCss) { %>
-    <link rel="stylesheet" href="<%= criticalCss %>">
-    <% } %>
-    <% if (asyncCss) { %>
-    <link rel="preload" href="<%= asyncCss %>" as="style"
+    <link rel="stylesheet" href="css/index/critical.min.css">
+    <link rel="preload" href="css/index/async.min.css" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="<%= asyncCss %>">
+        <link rel="stylesheet" href="css/index/async.min.css">
     </noscript>
-    <% } %>
 </head>
 
 <body class="index-page">
-<i aria-hidden="true" class="header-toggle d-xl-none bi bi-list"></i>
-<header id="header" class="header dark-background d-flex flex-column">
-    <div class="profile-img">
-        <img src="assets/img/my-profile-img.webp" alt="Profile image" loading="eager" fetchpriority="high"
-             class="img-fluid rounded-circle">
-    </div>
 
-    <a aria-label="Главная страница" href="index.html" class="logo d-flex align-items-center justify-content-center">
-        <svg class="me-2" width="40" height="26" viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img"
+<input class="burger-menu-checkbox" type="checkbox" id="burger-menu" aria-label="mobile-menu"/>
+<label for="burger-menu" class="burger-menu" aria-label="mobile-menu">
+    <span class="burger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+    </span>
+</label>
+
+<header id="header" class="header dark-background">
+    <div class="profile-img">
+        <img src="assets/img/my-profile-img.webp" alt="Profile image" loading="eager" fetchpriority="high">
+    </div>
+    <a aria-label="Главная страница" href="index.html" class="logo">
+        <svg width="40" height="26" viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img"
              aria-label="OG logo">
             <defs>
                 <style>
@@ -67,53 +68,127 @@
         </svg>
         <h1>Олег Галузинский</h1>
     </a>
-    <div class="social-links text-center">
+    <div class="social-links">
         <a aria-label="Ссылка на профиль GitHub" href="https://github.com/Oleg-Frontend-creator">
-            <i aria-hidden="true" class="bi bi-github"></i>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                 viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+            </svg>
         </a>
         <a aria-label="Ссылка на профиль WhatsApp" href="https://wa.me/79936067183">
-            <i aria-hidden="true" class="bi bi-whatsapp"></i>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                 viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+            </svg>
         </a>
         <a aria-label="Ссылка на профиль Telegram" href="https://t.me/webbuilding_moscow">
-            <i aria-hidden="true" class="bi bi-telegram"></i>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                 viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+            </svg>
         </a>
         <a aria-label="Ссылка на email почту" href="mailto:webbuilding.moscow@yandex.com">
-            <i aria-hidden="true" class="bi bi-envelope-at"></i>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                 viewBox="0 0 16 16">
+                <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z"/>
+                <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+            </svg>
         </a>
         <a aria-label="Ссылка для скачивания pdf-портфолио" href="assets/Oleg_Galuzinsky_Frontend_Portfolio_2026.pdf"
-                    download>
-            <i aria-hidden="true" class="bi bi-filetype-pdf"></i>
+           download>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
+            </svg>
         </a>
     </div>
     <nav id="navmenu" class="navmenu">
         <ul>
             <li>
-                <a href="#hero"><i aria-hidden="true" class="bi bi-house navicon"></i>Главная</a>
+                <a href="#hero">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                    </svg>
+                    <span>Главная</span>
+                </a>
             </li>
             <li>
-                <a href="#about"><i aria-hidden="true" class="bi bi-person navicon"></i>Обо мне</a>
+                <a href="#about">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                    </svg>
+                    <span>Обо мне</span>
+                </a>
             </li>
             <li>
-                <a href="#stats"><i aria-hidden="true" class="bi bi-bar-chart navicon"></i>Статистика</a>
+                <a href="#stats">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/>
+                    </svg>
+                    <span>Статистика</span>
+                </a>
             </li>
             <li>
-                <a href="#skills"><i aria-hidden="true" class="bi bi-code-slash navicon"></i>Навыки</a>
+                <a href="#skills">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+                    </svg>
+                    <span>Навыки</span>
+                </a>
             </li>
             <li>
-                <a href="#resume"><i aria-hidden="true" class="bi bi-file-earmark-text navicon"></i>Резюме</a>
+                <a href="#resume">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                        <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                    </svg>
+                    <span>Резюме</span>
+                </a>
             </li>
             <li>
-                <a href="#portfolio"><i aria-hidden="true" class="bi bi-images navicon"></i>Портфолио</a>
+                <a href="#portfolio">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                        <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+                    </svg>
+                    <span>Портфолио</span>
+                </a>
             </li>
             <li>
-                <a href="#technologies"><i aria-hidden="true"
-                                           class="bi bi-gear-wide-connected navicon"></i>Технологии</a>
+                <a href="#technologies">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"/>
+                    </svg>
+                    Технологии
+                </a>
             </li>
             <li>
-                <a href="#services"><i aria-hidden="true" class="bi bi-hdd-stack navicon"></i>Услуги</a>
+                <a href="#services">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M14 10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1zM2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2z"/>
+                        <path d="M5 11.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M14 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+                        <path d="M5 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                    </svg>
+                    <span>Услуги</span>
+                </a>
             </li>
             <li>
-                <a href="#contact"><i aria-hidden="true" class="bi bi-envelope navicon"></i>Контакты</a>
+                <a href="#contact">
+                    <svg aria-hidden="true" class="navicon"
+                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                    </svg>
+                    <span>Контакты</span>
+                </a>
             </li>
         </ul>
     </nav>
@@ -121,67 +196,106 @@
 
 <main>
     <section id="hero" class="hero section light-background">
-        <div class="container" data-aos="fade-up"
-             data-aos-delay="100">
+        <div class="container reveal" style="--reveal-delay: 100ms">
             <h2>Олег Галузинский</h2>
             <p class="typed-text">
                 Я -
                 <span class="typed"
-                      data-typed-items="инженер по сложным техническим системам, спортсмен-стритлифтер, фронтенд-разработчик на Angular и TypeScript">
+                      data-typed-items="инженер по сложным техническим системам, спортсмен-стритлифтер, фронтенд-разработчик на Angular">
                 </span>
             </p>
             <p class="hero-description">
                 Разрабатываю быстрые и понятные веб-приложения и сайты, опираясь на инженерное мышление, опыт работы
-                с
-                инфраструктурой и спортивную дисциплину
+                с инфраструктурой и спортивную дисциплину
             </p>
         </div>
     </section>
     <section id="about" class="about section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Обо мне</h2>
-            <p>
-                Создаю современные интерфейсы, работаю с веб-технологиями и постоянно развиваю свои навыки.
-                Комплексно подхожу к задачам, ценю структурность, скорость и чистую логику в проектах.
-            </p>
-        </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-4 justify-content-center">
-                <div class="col-lg-4">
-                    <img src="assets/img/my-profile-img.webp" class="img-fluid" loading="lazy" alt="Peofile image">
-                </div>
-                <div class="col-lg-8 content">
-                    <h2><span>Фронтенд-разработчик</span> <span class="deleting-span">&amp;</span>
-                        <span>Инженер</span> <span class="deleting-span">&amp;</span>
-                        <span>Спортсмен</span></h2>
-                    <p class="fst-italic pt-3">Фронтенд-разработчик, технический специалист и спортсмен.</p>
-                    <p class="fst-italic pb-3">Развиваюсь в веб-технологиях, системном мышлении и инженерии.</p>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Дата
-                                    рождения:</strong>
-                                    <span>25 сентября 2001</span></li>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Сайт:</strong>
-                                    <span>modernstack.ru</span></li>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Телефон:</strong>
-                                    <span>+7 (993) 606-71-83</span></li>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Город:</strong>
-                                    <span>Москва, Россия</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Возраст:</strong>
-                                    <span>24</span></li>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Почта:</strong>
-                                    <span>webbuilding.moscow@yandex.com</span></li>
-                                <li><i aria-hidden="true" class="bi bi-chevron-right"></i> <strong>Фриланс:</strong>
-                                    <span>Открыт к проектам</span></li>
-                            </ul>
-                        </div>
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Обо мне</h2>
+                <p>
+                    Создаю современные интерфейсы, работаю с веб-технологиями и постоянно развиваю свои навыки.
+                    Комплексно подхожу к задачам, ценю структурность, скорость и чистую логику в проектах.
+                </p>
+            </div>
+            <div class="about-content reveal" style="--reveal-delay: 100ms">
+                <img src="assets/img/my-profile-img.webp" class="img-fluid" loading="lazy" alt="Profile image">
+                <div class="content">
+                    <h2>
+                        <span>Фронтенд-разработчик</span>
+                        <span class="deleting-span">&amp;</span>
+                        <span>Инженер</span>
+                        <span class="deleting-span">&amp;</span>
+                        <span>Спортсмен</span>
+                    </h2>
+                    <div class="subtitle-text">
+                        <p>Фронтенд-разработчик, технический специалист и спортсмен.</p>
+                        <p>Развиваюсь в веб-технологиях, системном мышлении и инженерии.</p>
                     </div>
-                    <p class="pt-3">
+                    <div class="about-me-text">
+                        <ul>
+                            <li>
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Дата рождения:</strong>
+                                <span>25.09.2001</span></li>
+                            <li>
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Сайт:</strong>
+                                <span>modernstack.ru</span></li>
+                            <li>
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Телефон:</strong>
+                                <span>+7 (993) 606-71-83</span></li>
+                            <li>
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Город:</strong>
+                                <span>Москва, Россия</span></li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Возраст:</strong>
+                                <span>24</span></li>
+                            <li class="email-in-about-block">
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Почта:</strong>
+                                <span>webbuilding.moscow@yandex.com</span></li>
+                            <li>
+                                <svg aria-hidden="true" width="20" height="20" fill="#8800FF"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                                <strong>Фриланс:</strong>
+                                <span>Открыт к проектам</span></li>
+                        </ul>
+                    </div>
+                    <p>
                         Я — фронтенд-разработчик с инженерным образованием и опытом работы со сложными техническими
                         системами. Развиваюсь в веб-технологиях, архитектуре приложений и силовой подготовке. Люблю
                         создавать удобные и логичные интерфейсы, улучшать архитектуру и разбираться в сложных процессах
@@ -193,127 +307,129 @@
         </div>
     </section>
     <section id="stats" class="stats section">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item">
-                        <i aria-hidden="true" class="bi bi-gear"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p><strong>Года Практики</strong> <span>самостоятельно и под руководством наставников</span></p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item">
-                        <i aria-hidden="true" class="bi bi-journal-richtext"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p><strong>Сильных проектов</strong> <span>в портфолио</span></p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item">
-                        <i aria-hidden="true" class="bi bi-headset"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p><strong>Проекта На Продакшене</strong> <span>развернуты и доступны пользователям</span></p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item">
-                        <i aria-hidden="true" class="bi bi-code-slash"></i>
-                        <span data-purecounter-start="0" data-purecounter-end="550" data-purecounter-duration="1"
-                              class="purecounter"></span>
-                        <p><strong>Часов Разработки</strong> <span>в реальных задачах, архитектуре и интеграциях</span>
-                        </p>
-                    </div>
-                </div>
+        <div class="container reveal">
+            <div class="stats-item">
+                <svg aria-hidden="true" width="44" height="44" fill="#fff"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                </svg>
+                <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                <p><strong>Года Практики</strong> <span>самостоятельно и под руководством наставников</span></p>
+            </div>
+            <div class="stats-item">
+                <svg aria-hidden="true" width="44" height="44" fill="#fff"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path d="M7.5 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                <p><strong>Сильных проектов</strong> <span>в портфолио</span></p>
+            </div>
+            <div class="stats-item">
+                <svg aria-hidden="true" width="44" height="44" fill="#fff"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+                </svg>
+                <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                <p><strong>Проекта На Продакшене</strong> <span>развернуты и доступны пользователям</span></p>
+            </div>
+            <div class="stats-item">
+                <svg aria-hidden="true" width="44" height="44" fill="#fff"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+                </svg>
+                <span data-purecounter-start="0" data-purecounter-end="550" data-purecounter-duration="1"
+                      class="purecounter"></span>
+                <p><strong>Часов Разработки</strong> <span>в реальных задачах, архитектуре и интеграциях</span></p>
             </div>
         </div>
     </section>
     <section id="skills" class="skills section light-background">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Навыки</h2>
-            <p>
-                Мои основные навыки во фронтенде и сопутствующих технологиях. Работаю с JavaScript/TypeScript, Angular,
-                адаптивной версткой, SPA-подходом, RxJS и инструментами сборки. Постоянно развиваюсь в архитектуре
-                приложений и качественном UI.
-            </p>
-        </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row skills-content skills-animation">
-                <div class="col-lg-6">
-                    <div class="progress">
-                        <span class="skill"><span>HTML</span> <i aria-hidden="true" class="val">100%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                 aria-valuemax="100" title="HTML-skill-value"></div>
-                        </div>
-                    </div>
-                    <div class="progress">
-                        <span class="skill"><span>CSS / SASS / LESS</span> <i aria-hidden="true"
-                                                                              class="val">90%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                 aria-valuemax="100" title="CSS-skill-value"></div>
-                        </div>
-                    </div>
-                    <div class="progress">
-                        <span class="skill"><span>JavaScript (ES6+)</span> <i aria-hidden="true"
-                                                                              class="val">85%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                                 aria-valuemax="100" title="JS-skill-value"></div>
-                        </div>
+        <div class="container">
+            <div class="section-title reveal" style="--reveal-delay: 0ms">
+                <h2>Навыки</h2>
+                <p>
+                    Мои основные навыки во фронтенде и сопутствующих технологиях. Работаю с JavaScript/TypeScript,
+                    Angular,
+                    адаптивной версткой, SPA-подходом, RxJS и инструментами сборки. Постоянно развиваюсь в архитектуре
+                    приложений и качественном UI.
+                </p>
+            </div>
+            <div class="skills-content reveal" style="--reveal-delay: 100ms">
+                <div class="progress">
+                    <span class="skill"><span>HTML</span> <i aria-hidden="true" class="val">100%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                             aria-valuemax="100" title="HTML-skill-value"></div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="progress">
-                        <span class="skill"><span>TypeScript & Angular</span> <i aria-hidden="true" class="val">70%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                 aria-valuemax="100" title="TS-skill-value"></div>
-                        </div>
+                <div class="progress">
+                        <span class="skill"><span>CSS / SASS / LESS</span> <i aria-hidden="true"
+                                                                              class="val">90%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                             aria-valuemax="100" title="CSS-skill-value"></div>
                     </div>
-                    <div class="progress">
+                </div>
+                <div class="progress">
+                        <span class="skill"><span>JavaScript (ES6+)</span> <i aria-hidden="true"
+                                                                              class="val">85%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                             aria-valuemax="100" title="JS-skill-value"></div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <span class="skill"><span>TypeScript & Angular</span> <i aria-hidden="true"
+                                                                             class="val">70%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                             aria-valuemax="100" title="TS-skill-value"></div>
+                    </div>
+                </div>
+                <div class="progress">
                         <span class="skill"><span>Git / GitHub / npm</span> <i aria-hidden="true"
                                                                                class="val">80%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                 aria-valuemax="100" title="Git-skill-value"></div>
-                        </div>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                             aria-valuemax="100" title="Git-skill-value"></div>
                     </div>
-                    <div class="progress">
+                </div>
+                <div class="progress">
                         <span class="skill"><span>Gulp / Grunt / Webpack</span> <i aria-hidden="true"
                                                                                    class="val">65%</i></span>
-                        <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
-                                 aria-valuemax="100" title="Webpack-skill-value"></div>
-                        </div>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
+                             aria-valuemax="100" title="Webpack-skill-value"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <section id="resume" class="resume section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Резюме</h2>
-            <p>
-                Я развиваюсь как фронтенд-разработчик на основе сильного инженерного образования и опыта работы
-                с автоматизированными системами. Как технический специалист отвечаю за стабильную
-                работу серверного и сетевого оборудования, занимаюсь мониторингом, диагностикой и безопасностью.
-            </p>
-            <p>
-                Инженерный опыт помогает в разработке: понимаю архитектуру «под капотом», выстраиваю предсказуемую
-                логику и делаю интерфейсы, которые работают стабильно, а не только выглядят красиво. Ниже — краткое
-                резюме моего пути.
-            </p>
-        </div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-title reveal" style="--reveal-delay: 0ms">
+                <h2>Резюме</h2>
+                <p>
+                    Я развиваюсь как фронтенд-разработчик на основе сильного инженерного образования и опыта работы
+                    с автоматизированными системами. Как технический специалист отвечаю за стабильную
+                    работу серверного и сетевого оборудования, занимаюсь мониторингом, диагностикой и безопасностью.
+                </p>
+                <p>
+                    Инженерный опыт помогает в разработке: понимаю архитектуру «под капотом», выстраиваю предсказуемую
+                    логику и делаю интерфейсы, которые работают стабильно, а не только выглядят красиво. Ниже — краткое
+                    резюме моего пути.
+                </p>
+            </div>
+            <div class="resume-text">
+                <div class="resume-column reveal" style="--reveal-delay: 100ms">
                     <h3 class="resume-title">Обзор</h3>
-                    <div class="resume-item pb-0">
+                    <div class="resume-item">
                         <p>
                             Я — фронтенд-разработчик с инженерным подходом и опытом работы с техническими системами.
                             Работаю с веб-технологиями и
@@ -321,28 +437,29 @@
                             пользователям как технический специалист.
                         </p>
                         <p>
-                            Моя цель — создавать не только красивые, но и <span class="fw-bold">удобные, быстрые и надежные решения</span>,
-                            которые помогают бизнесу. Ценю <span class="fw-bold">структурность</span>, <span
-                                class="fw-bold">качество</span> и внимание к деталям.
+                            Моя цель — создавать не только красивые, но и
+                            <span>удобные, быстрые и надежные решения</span>,
+                            которые помогают бизнесу. Ценю <span>структурность</span>, <span>качество</span> и внимание
+                            к деталям.
                         </p>
                         <p>Основные компетенции:</p>
-                        <ul class="list-unstyled">
+                        <ul>
                             <li>
-                                — <span class="fw-bold">Техническое образование</span> и инженерное мышление;
+                                — <span>Техническое образование</span> и инженерное мышление;
                             </li>
                             <li>
-                                — Frontend-разработка: сайты, интерфейсы и SPA-приложения на <span class="fw-bold">Angular, TypeScript и JavaScript</span>;
+                                — Frontend-разработка: сайты, интерфейсы и SPA-приложения на <span>Angular, TypeScript и JavaScript</span>;
                             </li>
                             <li>
-                                — Опыт работы с <span class="fw-bold">серверным оборудованием, ЛВС и элементами безопасности</span>;
+                                — Опыт работы с <span>серверным оборудованием, ЛВС и элементами безопасности</span>;
                             </li>
-                            <li>— <span class="fw-bold">Системность</span>: дисциплина (стритлифтинг), логичность и
+                            <li>— <span>Системность</span>: дисциплина (стритлифтинг), логичность и
                                 внимание к деталям.
                             </li>
                         </ul>
                     </div>
                     <h3 class="resume-title">Образование</h3>
-                    <div class="resume-item pb-0">
+                    <div class="resume-item">
                         <h4>Высшее образование — инженер автоматизированных систем</h4>
                         <h5>2019 - 2024</h5>
                         <p><em>Калининград, Россия</em></p>
@@ -356,7 +473,7 @@
                         <p>Прошёл профессиональное обучение в школе ITLogia по направлению фронтенд-разработки, а также
                             значительно расширил программу за счёт самостоятельной практики и реальных проектов.</p>
                         <p>Основные компетенции:</p>
-                        <ul class="list-unstyled">
+                        <ul>
                             <li>— HTML5, CSS3, адаптивная вёрстка, работа по макетам (Figma & Photoshop)</li>
                             <li>— JavaScript (ES6+): функции, модули, события, работа с DOM</li>
                             <li>— Основы React в рамках курса</li>
@@ -367,14 +484,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="resume-column reveal" style="--reveal-delay: 200ms">
                     <h3 class="resume-title">Профессиональный путь</h3>
-
                     <div class="resume-item">
                         <h4>Технический специалист &amp; Администратор безопасности</h4>
                         <h5>2024 - настоящее время</h5>
                         <p><em>Москва, Россия</em></p>
-                        <ul class="list-unstyled">
+                        <ul>
                             <li>— Поддержка сложных автоматизированных систем на критически важном объекте</li>
                             <li>— Работа с серверным и коммутационным оборудованием</li>
                             <li>— Администрирование элементов безопасности</li>
@@ -383,12 +499,11 @@
                             <li>— Обеспечение стабильности работы инфраструктуры</li>
                         </ul>
                     </div>
-
                     <div class="resume-item">
                         <h4>Выездной специалист по ремонту и настройке ПК</h4>
                         <h5>2024 - 2025</h5>
                         <p><em>Москва и Московская область, Россия</em></p>
-                        <ul class="list-unstyled">
+                        <ul>
                             <li>— Настройка Windows, рабочих окружений, офисного и профильного ПО</li>
                             <li>— Апгрейд техники: замена и установка SSD, оперативной памяти, настройка охлаждения</li>
                             <li>— Оптимизация производительности системы, чистка от мусора и вирусов</li>
@@ -396,12 +511,11 @@
                             <li>— Консультации пользователей, объяснение сложных вещей простым языком</li>
                         </ul>
                     </div>
-
                     <div class="resume-item">
                         <h4>Frontend-разработчик</h4>
                         <h5>2024 - настоящее время</h5>
                         <p><em>Удаленно / проектная работа</em></p>
-                        <ul class="list-unstyled">
+                        <ul>
                             <li>— Разработка адаптивных лендингов и SPA-приложений</li>
                             <li>— Стек: HTML, CSS/SCSS, JavaScript (ES6+), TypeScript, Angular</li>
                             <li>— Работа с REST API, авторизацией, взаимодействием с backend (MongoDB)</li>
@@ -416,141 +530,293 @@
         </div>
     </section>
     <section id="portfolio" class="portfolio section light-background">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Портфолио</h2>
-            <p>
-                Здесь вы найдете примеры работ на Angular, TypeScript и JavaScript — лендинги, web-приложения и
-                интерфейсы с кастомной логикой.
-            </p>
-        </div>
         <div class="container">
+            <div class="section-title reveal">
+                <h2>Портфолио</h2>
+                <p>
+                    Здесь вы найдете примеры работ на Angular, TypeScript и JavaScript — лендинги, web-приложения и
+                    интерфейсы с кастомной логикой.
+                </p>
+            </div>
             <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                <ul class="portfolio-filters isotope-filters reveal" style="--reveal-delay: 100ms">
                     <li data-filter="*" class="filter-active">All</li>
                     <li data-filter=".filter-spa-angular">SPA on Angular</li>
-                    <li data-filter=".filter-spa-typescript">SPA on TypeScript</li>
+                    <li data-filter=".filter-spa-typescript">SPA on TS</li>
+                    <li data-filter=".filter-spa-javascript">SPA on JS</li>
                     <li data-filter=".filter-landing">Landing</li>
                 </ul>
 
-                <div class="isotope-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio-item isotope-item filter-spa-angular">
-                        <div class="portfolio-content h-100">
-                            <img src="assets/img/portfolio-index-images/1.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                <div class="isotope-container">
+                    <div class="portfolio-item isotope-item filter-spa-angular reveal" style="--reveal-delay: 100ms">
+                        <div class="portfolio-content">
+                            <img src="assets/img/portfolio-index-images/1.webp"
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>Интернет-магазин растений</h4>
                                 <p>Полноценный интернет-магазин на Angular с корзиной, избранным, фильтрами и личным
                                     кабинетом.</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/1.webp"
-                                   data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=plants-angular-shop" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=plants-angular-shop" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-item isotope-item filter-spa-angular">
-                        <div class="portfolio-content h-100">
+                    <div class="portfolio-item isotope-item filter-spa-angular reveal" style="--reveal-delay: 200ms">
+                        <div class="portfolio-content">
                             <img src="assets/img/portfolio-index-images/2.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>Сайт digital-агентства с блог-платформой</h4>
                                 <p>Корпоративный сайт с динамическим блогом, фильтрацией статей и системой
                                     комментариев</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/2.webp"
-                                   data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=digital-agency-blog" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=digital-agency-blog" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-item isotope-item filter-spa-typescript">
-                        <div class="portfolio-content h-100">
+                    <div class="portfolio-item isotope-item filter-spa-typescript reveal" style="--reveal-delay: 300ms">
+                        <div class="portfolio-content">
                             <img src="assets/img/portfolio-index-images/3.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>LuminCoin Finance — приложение для учёта финансов</h4>
                                 <p>SPA на TypeScript для учёта доходов и расходов с дашбордами и аналитикой.</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/3.webp"
-                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=lumincoin-finance" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=lumincoin-finance" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-item isotope-item filter-books">
-                        <div class="portfolio-content h-100">
+                    <div class="portfolio-item isotope-item filter-spa-javascript reveal" style="--reveal-delay: 400ms">
+                        <div class="portfolio-content">
                             <img src="assets/img/portfolio-index-images/4.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>Freelance Studio — админ-панель для управления заказами и фрилансерами</h4>
                                 <p>SPA на JavaScript для работы с заказами и фрилансерами</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/4.webp"
-                                   data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-book" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=freelance-studio" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=freelance-studio" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-item isotope-item filter-landing">
-                        <div class="portfolio-content h-100">
+                    <div class="portfolio-item isotope-item filter-landing reveal" style="--reveal-delay: 500ms">
+                        <div class="portfolio-content">
+                            <img src="assets/img/portfolio-index-images/8.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
+                                <h4>DME Passport Control — коммерческий информационный веб-проект</h4>
+                                <p>Высокопроизводительный информационный сайт с управляемой загрузкой ресурсов</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/8.webp"
+                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="project-details.html?id=dme-passport-control" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-landing reveal" style="--reveal-delay: 600ms">
+                        <div class="portfolio-content">
+                            <img src="assets/img/portfolio-index-images/9.webp" class="img-fluid"
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
+                                <h4>Shadient Studio — B2B маркетинговый лендинг</h4>
+                                <p>Высокопроизводительный B2B-лендинг с фокусом на скорость, SEO и UX</p>
+                                <a aria-label="Приблизить" href="assets/img/portfolio-index-images/9.webp"
+                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
+                                <a aria-label="Перейти по ссылке на проект портфолио"
+                                   href="project-details.html?id=shadient-studio" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item isotope-item filter-landing reveal" style="--reveal-delay: 700ms">
+                        <div class="portfolio-content">
                             <img src="assets/img/portfolio-index-images/5.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>ItlogiaQuiz — сайт-квиз для проверки знаний JavaScript</h4>
                                 <p>Многостраничный JS-квиз с прогресс-баром, таймером и экраном результатов</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/5.webp"
-                                   data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-app" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=itlogia-quiz" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=itlogia-quiz" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-item isotope-item filter-landing">
-                        <div class="portfolio-content h-100">
+                    <div class="portfolio-item isotope-item filter-landing reveal" style="--reveal-delay: 800ms">
+                        <div class="portfolio-content">
                             <img src="assets/img/portfolio-index-images/6.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>SushiBu — лендинг доставки суши</h4>
                                 <p>Адаптивный лендинг службы доставки суши</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/6.webp"
-                                   data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-product" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=sushi-landing" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=sushi-landing" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio-item isotope-item filter-landing">
-                        <div class="portfolio-content h-100">
+                    <div class="portfolio-item isotope-item filter-landing reveal" style="--reveal-delay: 900ms">
+                        <div class="portfolio-content">
                             <img src="assets/img/portfolio-index-images/7.webp" class="img-fluid"
-                                 loading="lazy" decoding="async" width="370" height="250" alt="Portfolio mockup image">
-                            <div class="portfolio-info">
+                                 loading="lazy" decoding="async" width="355" height="266" alt="Portfolio mockup image">
+                            <div class="project-summary">
                                 <h4>Cappadocia Tour — адаптивный лендинг туристической программы</h4>
                                 <p>Адаптивный лендинг с кастомными каруселями и яркой визуальной частью</p>
                                 <a aria-label="Приблизить" href="assets/img/portfolio-index-images/7.webp"
-                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
+                                   data-gallery="portfolio-gallery-branding" class="glightbox preview-link">
+                                    <svg width="26" height="26" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11M13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0"/>
+                                        <path d="M10.344 11.742q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1 6.5 6.5 0 0 1-1.398 1.4z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
                                 <a aria-label="Перейти по ссылке на проект портфолио"
-                                   href="portfolio-details.html?id=cappadocia-tour" title="Читать далее"
-                                   class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
+                                   href="project-details.html?id=cappadocia-tour" title="Читать далее"
+                                   class="details-link">
+                                    <svg width="34" height="34" fill="#fff"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -559,42 +825,19 @@
         </div>
     </section>
     <section id="technologies" class="technologies section light-background">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Технологии</h2>
-            <p>
-                Работаю с современным технологическим стеком, который подходит как для быстрых коммерческих проектов,
-                так и для крупных SPA-приложений. Комбинирую инженерный подход, архитектурное мышление и внимание к
-                деталям — это позволяет создавать решения, которые легко поддерживать, развивать и оптимизировать.
-            </p>
-        </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-                    {
-                        "loop": true,
-                        "speed": 600,
-                        "autoplay": {
-                            "delay": 1000
-                        },
-                        "slidesPerView": "auto",
-                        "breakpoints": {
-                            "320": {
-                                "slidesPerView": 3,
-                                "spaceBetween": 20
-                            },
-                            "500": {
-                                "slidesPerView": 4,
-                                "spaceBetween": 40
-                            },
-                            "1200": {
-                                "slidesPerView": 6,
-                                "spaceBetween": 1
-                            }
-                        }
-                    }
-                </script>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Технологии</h2>
+                <p>
+                    Работаю с современным технологическим стеком, который подходит как для быстрых коммерческих
+                    проектов, так и для крупных SPA-приложений. Комбинирую инженерный подход, архитектурное мышление и
+                    внимание к деталям — это позволяет создавать решения, которые легко поддерживать, развивать и
+                    оптимизировать.
+                </p>
+            </div>
+            <div class="keen-center reveal" style="--reveal-delay: 100ms">
+                <div class="keen-slider" id="keenSlider">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -609,7 +852,7 @@
                             <p>JavaScript</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg height="120px" width="120px" version="1.1" id="_x32_"
                                  xmlns="http://www.w3.org/2000/svg"
@@ -651,7 +894,7 @@
                             <p>CSS</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg width="120px" height="120px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="0" fill="none" width="20" height="20"/>
@@ -663,7 +906,7 @@
                             <p>HTML</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -672,7 +915,7 @@
                             <p>Angular</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -681,7 +924,7 @@
                             <p>Figma</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg width="120px" height="120px" viewBox="0 -32 256 256" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -694,7 +937,7 @@
                             <p>SASS</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -703,7 +946,7 @@
                             <p>LESS</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg width="120px" height="120px" viewBox="0 -173.5 512 512" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -717,7 +960,7 @@
                             <p>NPM</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg width="120px" height="120px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <title>file_type_gulp</title>
@@ -729,7 +972,7 @@
                             <p>Gulp</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -738,7 +981,7 @@
                             <p>Git</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 1024 1024"
                                  xmlns="http://www.w3.org/2000/svg" class="icon">
@@ -747,7 +990,7 @@
                             <p>GitHub</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
                                  xmlns="http://www.w3.org/2000/svg"><title>TypeScript icon</title>
@@ -756,7 +999,7 @@
                             <p>TypeScript</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg fill="url(#gradient)" width="120px" height="120px" viewBox="0 0 24 24" role="img"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -765,7 +1008,7 @@
                             <p>Bootstrap</p>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="keen-slider__slide">
                         <div data-tilt data-tilt-scale="1.3">
                             <svg width="120px" height="120px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <title>webpack</title>
@@ -781,18 +1024,18 @@
         </div>
     </section>
     <section id="services" class="services section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Мои услуги</h2>
-            <p>
-                В этом разделе представлены услуги, которые я предлагаю как фронтенд-разработчик. Я специализируюсь на
-                создании современных веб-приложений и интерфейсов, интеграции с backend-частью и обеспечении высокого
-                качества пользовательского опыта.
-            </p>
-        </div>
-        <div class="container" data-aos="fade-up">
-            <div class="row gy-4 mx-2">
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon flex-shrink-0">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Мои услуги</h2>
+                <p>
+                    В этом разделе представлены услуги, которые я предлагаю как фронтенд-разработчик. Я специализируюсь
+                    на создании современных веб-приложений и интерфейсов, интеграции с backend-частью и обеспечении
+                    высокого качества пользовательского опыта.
+                </p>
+            </div>
+            <div class="service-items">
+                <div class="service-item reveal" style="--reveal-delay: 100ms">
+                    <div class="icon">
                         <svg fill="#fff" width="30px" height="30px" viewBox="0 0 30 30"
                              xmlns="http://www.w3.org/2000/svg">
                             <path d="M25 24.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5.224-.5.5-.5.5.224.5.5zM23.5 12h2c.277 0 .5.223.5.5s-.223.5-.5.5h-2c-.277 0-.5-.223-.5-.5s.223-.5.5-.5zm-3-2c-.822 0-1.5.678-1.5 1.5v14c0 .822.678 1.5 1.5 1.5h8c.822 0 1.5-.678 1.5-1.5v-14c0-.822-.678-1.5-1.5-1.5zm0 1h8c.286 0 .5.214.5.5v14c0 .286-.214.5-.5.5h-8c-.286 0-.5-.214-.5-.5v-14c0-.286.214-.5.5-.5zM14 19.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5.224-.5.5-.5.5.224.5.5zM1.5 3C.678 3 0 3.678 0 4.5v16c0 .822.678 1.5 1.5 1.5H11v2H9.5c-.277 0-.5.223-.5.5s.223.5.5.5h8c.277 0 .5-.223.5-.5s-.223-.5-.5-.5H16v-2h1.5c.668 0 .656-1 0-1h-16c-.286 0-.5-.214-.5-.5V18h16.5c.277 0 .5-.223.5-.5s-.223-.5-.5-.5H1V4.5c0-.286.214-.5.5-.5h24c.286 0 .5.214.5.5v4c0 .665 1 .657 1 0v-4c0-.822-.678-1.5-1.5-1.5zM12 22h3v2h-3z"/>
@@ -800,19 +1043,19 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=adaptive-sites" class="stretched-link">
+                            <a href="service-details.html?id=adaptive-sites">
                                 Разработка адаптивных и функциональных сайтов
                             </a>
                         </h4>
                         <p class="description">
                             Создаю современные сайты, которые корректно работают на любых устройствах: настольных
-                            компьютерах, планшетах и мобильных телефонах. Использую HTML5, CSS3, JavaScript, адаптивную
-                            вёрстку и современные практики разработки.
+                            компьютерах, планшетах и мобильных телефонах. Использую HTML5, CSS3, JavaScript,
+                            адаптивную вёрстку и современные практики разработки.
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 200ms">
+                    <div class="icon">
                         <svg fill="#fff" width="30px" height="30px" viewBox="0 0 24 24" role="img"
                              xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.6 11.28v1.44a.48.48 0 0 1-.48.48H8.88a.48.48 0 0 1-.48-.48v-1.44a.48.48 0 0 1 .48-.48h6.24a.48.48 0 0 1 .48.48zM12 15.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm3.12-8.4H8.88a.48.48 0 0 0-.48.48v1.44c0 .265.215.48.48.48h6.24a.48.48 0 0 0 .48-.48V7.68a.48.48 0 0 0-.48-.48zm8.04-3.204-1.716 14.736L11.976 24 2.52 18.732.84 3.996 11.976 0 23.16 3.996zM16.8 6.24a1.44 1.44 0 0 0-1.44-1.44H8.64A1.44 1.44 0 0 0 7.2 6.24v11.52c0 .795.645 1.44 1.44 1.44h6.72a1.44 1.44 0 0 0 1.44-1.44V6.24z"/>
@@ -820,19 +1063,19 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=spa-angular" class="stretched-link">
+                            <a href="service-details.html?id=spa-angular">
                                 SPA-приложения на Angular
                             </a>
                         </h4>
                         <p class="description">
                             Разрабатываю одностраничные приложения (SPA) с высокой производительностью и удобством
-                            использования. Использую Angular, TypeScript и RxJS, создавая масштабируемые интерфейсы и
-                            стабильную архитектуру.
+                            использования. Использую Angular, TypeScript и RxJS, создавая масштабируемые интерфейсы
+                            и стабильную архитектуру.
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 300ms">
+                    <div class="icon">
                         <svg class="svg-db" style="width: 30px" version="1.1" id="Icons"
                              xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 32 32" xml:space="preserve">
@@ -857,7 +1100,7 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=api-backend" class="stretched-link">
+                            <a href="service-details.html?id=api-backend">
                                 Интеграция API и взаимодействие с backend
                             </a>
                         </h4>
@@ -867,8 +1110,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 400ms">
+                    <div class="icon">
                         <svg fill="#fff" width="30px" height="30px" viewBox="0 0 24 24" version="1.1"
                              xmlns="http://www.w3.org/2000/svg">
                             <g stroke="none" stroke-width="1" fill-rule="evenodd">
@@ -878,22 +1121,21 @@
                                 </g>
                             </g>
                         </svg>
-
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=animations-interactivity" class="stretched-link">
+                            <a href="service-details.html?id=animations-interactivity">
                                 Настройка анимаций и интерактивности
                             </a>
                         </h4>
                         <p class="description">
-                            Добавляю современные анимации и micro-interaction элементы через GSAP, AOS или animate.css.
-                            Это улучшает пользовательский опыт и делает интерфейс живым и современным.
+                            Добавляю современные анимации и micro-interaction элементы через GSAP, AOS или
+                            animate.css. Это улучшает пользовательский опыт и делает интерфейс живым и современным.
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 500ms">
+                    <div class="icon">
                         <svg fill="#fff" width="30px" height="30px" viewBox="0 0 24 24" id="Layer_1" version="1.1"
                              xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M5,22h13c0.55,0,1-0.45,1-1v-1c0-0.55-0.45-1-1-1s-1,0.45-1,1H6V4h6v5c0,0.55,0.45,1,1,1h4c0,0.55,0.45,1,1,1s1-0.45,1-1V9  c0-0.13-0.03-0.25-0.07-0.36c-0.02-0.04-0.04-0.08-0.07-0.12c-0.03-0.05-0.05-0.11-0.09-0.16l-5-6c-0.01-0.01-0.02-0.02-0.03-0.03  c-0.07-0.07-0.15-0.13-0.23-0.18c-0.03-0.02-0.06-0.05-0.1-0.06C13.28,2.03,13.15,2,13,2H5C4.45,2,4,2.45,4,3v18  C4,21.55,4.45,22,5,22z M14,5.76L15.87,8H14V5.76z"/>
@@ -905,18 +1147,18 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=code-optimization" class="stretched-link">
+                            <a href="service-details.html?id=code-optimization">
                                 Оптимизация кода и исправление ошибок
                             </a>
                         </h4>
                         <p class="description">
-                            Повышаю скорость загрузки и стабильность приложений: оптимизация скриптов, устранение багов,
-                            исправление верстки, улучшение производительности и рефакторинг.
+                            Повышаю скорость загрузки и стабильность приложений: оптимизация скриптов, устранение
+                            багов, исправление верстки, улучшение производительности и рефакторинг.
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 600ms">
+                    <div class="icon">
                         <svg fill="#fff" height="30px" width="30px" version="1.1"
                              xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 24 24" xml:space="preserve">
@@ -930,7 +1172,7 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=seo-optimization" class="stretched-link">
+                            <a href="service-details.html?id=seo-optimization">
                                 SEO-оптимизация для улучшения индексации сайтов
                             </a>
                         </h4>
@@ -941,10 +1183,11 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="700">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 700ms">
+                    <div class="icon">
                         <svg fill="#fff" version="1.1" id="DESIGN" xmlns="http://www.w3.org/2000/svg"
-                             width="30px" height="30px" viewBox="0 0 1800 1800" enable-background="new 0 0 1800 1800"
+                             width="30px" height="30px" viewBox="0 0 1800 1800"
+                             enable-background="new 0 0 1800 1800"
                              xml:space="preserve">
 <g id="Layer">
 	<g>
@@ -977,7 +1220,7 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=ui-ux-improvement" class="stretched-link">
+                            <a href="service-details.html?id=ui-ux-improvement">
                                 Улучшение UI/UX существующих сайтов
                             </a>
                         </h4>
@@ -987,8 +1230,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="800">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 800ms">
+                    <div class="icon">
                         <svg fill="#fff" width="30px" height="30px" viewBox="0 0 30 30"
                              xmlns="http://www.w3.org/2000/svg">
                             <path d="M22.5 15c-.822 0-1.5.678-1.5 1.5v.785c-.393.114-.77.267-1.13.465l-.313-.314c-.582-.582-1.54-.582-2.12 0-.583.58-.583 1.54 0 2.12l.313.315c-.2.36-.354.736-.47 1.13h-.78c-.822 0-1.5.678-1.5 1.5s.678 1.5 1.5 1.5h.785c.114.393.267.77.465 1.13l-.314.313c-.582.582-.582 1.54 0 2.12.58.583 1.54.583 2.12 0l.315-.313c.36.2.736.354 1.13.47v.78c0 .822.678 1.5 1.5 1.5s1.5-.678 1.5-1.5v-.785c.393-.114.77-.267 1.13-.465l.313.314c.582.582 1.54.582 2.12 0 .583-.58.583-1.54 0-2.12l-.313-.315c.2-.36.354-.736.47-1.13h.78c.822 0 1.5-.678 1.5-1.5s-.678-1.5-1.5-1.5h-.785c-.114-.393-.267-.77-.465-1.13l.314-.313c.582-.582.582-1.54 0-2.12-.58-.583-1.54-.583-2.12 0l-.315.313c-.36-.2-.736-.354-1.13-.47v-.78c0-.822-.678-1.5-1.5-1.5zm0 1c.286 0 .5.214.5.5v1c0 .328.084.508.38.588.57.115 1.112.34 1.597.66.198.132.462.106.63-.062l.543-.543c.202-.202.505-.202.707 0 .202.202.202.505 0 .707l-.543.543c-.168.167-.195.43-.064.628.32.486.544 1.028.658 1.597.08.302.344.383.592.383h1c.286 0 .5.214.5.5 0 .286-.214.5-.5.5h-1c-.394 0-.528.158-.588.38-.115.57-.34 1.112-.66 1.597-.132.198-.106.462.062.63l.543.543c.202.202.202.505 0 .707-.202.202-.505.202-.707 0l-.543-.543c-.167-.168-.43-.195-.628-.064-.486.32-1.028.544-1.597.658-.264.07-.383.34-.383.592v1c0 .286-.214.5-.5.5-.286 0-.5-.214-.5-.5v-1c0-.37-.138-.523-.38-.588-.57-.115-1.112-.34-1.597-.66-.198-.132-.462-.106-.63.062l-.543.543c-.202.202-.505.202-.707 0-.202-.202-.202-.505 0-.707l.543-.543c.168-.167.195-.43.064-.628-.32-.486-.544-1.028-.658-1.597-.05-.252-.262-.383-.592-.383h-1c-.286 0-.5-.214-.5-.5 0-.286.214-.5.5-.5h1c.445 0 .524-.143.588-.38.115-.57.34-1.112.66-1.597.132-.198.106-.462-.062-.63l-.543-.543c-.202-.202-.202-.505 0-.707.202-.202.505-.202.707 0l.543.543c.167.168.43.195.628.064.486-.32 1.028-.544 1.597-.658.402-.092.383-.406.383-.592v-1c0-.286.214-.5.5-.5zm0 4c-1.375 0-2.5 1.125-2.5 2.5s1.125 2.5 2.5 2.5 2.5-1.125 2.5-2.5-1.125-2.5-2.5-2.5zm0 1c.834 0 1.5.666 1.5 1.5s-.666 1.5-1.5 1.5-1.5-.666-1.5-1.5.666-1.5 1.5-1.5zm-10-13C10.02 8 8 10.02 8 12.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5S14.98 8 12.5 8zm0 1c1.94 0 3.5 1.56 3.5 3.5S14.44 16 12.5 16 9 14.44 9 12.5 10.56 9 12.5 9zm-1-9c-.822 0-1.5.678-1.5 1.5v1.91c-.763.21-1.494.51-2.182.9L5.943 2.437c-.582-.582-1.54-.582-2.123 0L2.406 3.85c-.58.58-.58 1.54 0 2.12l1.887 1.887c-.382.677-.68 1.394-.887 2.143H1.5c-.822 0-1.5.678-1.5 1.5v2c0 .822.678 1.5 1.5 1.5h1.908c.207.757.507 1.48.893 2.164l-1.894 1.893c-.582.582-.582 1.54 0 2.123l1.414 1.414c.582.582 1.54.582 2.123 0l1.897-1.9c.68.39 1.404.69 2.16.898V23.5c0 .822.678 1.5 1.5 1.5h2c.664 0 .66-1 0-1h-2c-.286 0-.5-.214-.5-.5v-2.234c0-.234-.16-.437-.39-.49-.93-.212-1.82-.58-2.63-1.09-.196-.124-.452-.095-.617.068l-.006.01-.003.004-2.118 2.12c-.2.2-.507.2-.71 0l-1.413-1.415c-.2-.202-.2-.508 0-.71l2.123-2.12.004-.004.002-.003c.162-.165.19-.42.067-.616-.508-.81-.874-1.7-1.085-2.63-.052-.23-.255-.39-.49-.39H1.5c-.286 0-.5-.214-.5-.5v-2c0-.286.214-.5.5-.5h2.234c.234 0 .437-.16.49-.39.21-.923.574-1.806 1.077-2.61.125-.198.095-.454-.07-.62L3.113 5.265c-.202-.202-.202-.505 0-.707l1.414-1.414c.202-.202.508-.202.71 0L7.34 5.248c.165.165.42.194.62.07.814-.512 1.71-.88 2.647-1.093.228-.052.39-.255.39-.49V1.5c0-.286.214-.5.5-.5h2c.286 0 .5.214.5.5v2.234c0 .234.16.437.39.49.93.212 1.817.58 2.626 1.089.197.123.454.094.62-.07l2.1-2.1c.202-.202.505-.202.707 0l1.414 1.414c.202.202.202.505 0 .707L19.764 7.36c-.165.164-.194.42-.07.62.506.81.87 1.697 1.08 2.63.053.228.256.39.49.39H23.5c.286 0 .5.214.5.5v2c0 .668 1 .652 1 0v-2c0-.822-.678-1.5-1.5-1.5h-1.908c-.207-.756-.505-1.48-.89-2.164l1.862-1.865c.582-.58.582-1.54 0-2.12L21.15 2.436c-.58-.582-1.54-.582-2.12 0l-1.87 1.87c-.68-.39-1.405-.69-2.16-.898V1.5c0-.822-.678-1.5-1.5-1.5z"/>
@@ -996,7 +1239,7 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=refactoring" class="stretched-link">
+                            <a href="service-details.html?id=refactoring">
                                 Рефакторинг и повышение стабильности проекта
                             </a>
                         </h4>
@@ -1007,8 +1250,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="900">
-                    <div class="icon flex-shrink-0">
+                <div class="service-item reveal" style="--reveal-delay: 900ms">
+                    <div class="icon">
                         <svg fill="#fff" width="50px" height="50px" viewBox="0 0 1000 1000" version="1.1"
                              xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 <g>
@@ -1022,7 +1265,7 @@
                     </div>
                     <div>
                         <h4 class="title">
-                            <a href="service-details.html?id=maintenance" class="stretched-link">
+                            <a href="service-details.html?id=maintenance">
                                 Поддержка и развитие веб-приложений
                             </a>
                         </h4>
@@ -1036,128 +1279,175 @@
         </div>
     </section>
     <section id="contact" class="contact section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Контакты</h2>
-            <p>Напишите мне письмо, если Вам интересно сотрудничество со мной</p>
-        </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-4">
-                <div class="col-lg-5">
-                    <div class="info-wrap">
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                            <i aria-hidden="true" class="bi bi-geo-alt flex-shrink-0"></i>
-                            <div>
-                                <h3>Адрес</h3>
-                                <p>город Москва, Россия</p>
-                            </div>
-                        </div>
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                            <i aria-hidden="true" class="bi bi-telephone flex-shrink-0"></i>
-                            <div>
-                                <h3>Мой номер телефона</h3>
-                                <p>+7 (993) 606-71-83</p>
-                            </div>
-                        </div>
-                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                            <i aria-hidden="true" class="bi bi-envelope flex-shrink-0"></i>
-                            <div>
-                                <h3>Email</h3>
-                                <p>webbuilding.moscow@yandex.com</p>
-                            </div>
-                        </div>
-                        <div class="map-frame" data-aos="fade-up" data-aos-delay="500">
-                            <iframe title="My Location"
-                                    src="https://yandex.ru/map-widget/v1/?ll=37.628196%2C55.750365&z=14.6"
-                                    frameborder="1" allowfullscreen="true"
-                                    style="position:relative;" loading="lazy"></iframe>
-                        </div>
+        <div class="container">
+            <header class="section-title reveal">
+                <h2>Контакты</h2>
+                <p>Frontend-разработчик (Angular). Рассматриваю проекты и вакансии.</p>
+            </header>
+            <div class="contact-block">
+                <section class="column reveal" style="--reveal-delay: 100ms">
+                    <header class="section-title">
+                        <h3>Готов к вакансиям и проектам</h3>
+                        <p>Frontend-разработка · Angular / TypeScript</p>
+                    </header>
+                    <div class="contact-items">
+                        <p class="contact-item reveal" style="--reveal-delay: 200ms">
+                            <svg aria-hidden="true" width="13" height="13" fill="#fff"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                            <span class="text">Москва · удаленная работа</span>
+                        </p>
+                        <a href="tel:+79936067183" class="contact-item reveal" style="--reveal-delay: 300ms"
+                           aria-label="Мой номер телефона">
+                            <svg aria-hidden="true" width="13" height="13" fill="#fff"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                            </svg>
+                            <span class="text">+7 (993) 606-71-83</span>
+                        </a>
+                        <a href="mailto:webbuilding.moscow@yandex.com?subject=Вакансия%20Frontend%20разработчик&body=Здравствуйте,%0A%0AНашли%20ваше%20портфолио%20и%20хотели%20бы%20обсудить:%0A—%20формат%20работы%0A—%20стек%0A—%20условия%0A%0AС%20уважением,"
+                           title="Написать письмо — откроется почтовый клиент"
+                           class="contact-item reveal" style="--reveal-delay: 400ms">
+                            <svg aria-hidden="true" width="13" height="13" fill="#fff"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                            </svg>
+                            <span class="text">webbuilding.moscow@yandex.com</span>
+                        </a>
                     </div>
-                </div>
+                    <div class="cta-buttons">
+                        <a class="cta-button tg" href="https://t.me/webbuilding_moscow">
+                            <span>Написать в Telegram</span>
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                 fill="#fff"
+                                 viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"></path>
+                            </svg>
+                        </a>
+                        <span class="tg-description">Быстрее всего отвечаю в Telegram</span>
+                        <a class="cta-button gh" href="https://github.com/Oleg-Frontend-creator">
+                            <span>GitHub</span>
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                 fill="#fff"
+                                 viewBox="0 0 16 16">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"></path>
+                            </svg>
+                        </a>
+                        <a class="cta-button hh" href="https://hh.ru/resume/60aa12aaff0f9675f80039ed1f775a374d7875">
+                            <span>HH.ru</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 version="1.1"
+                                 id="Слой_1" x="0px" y="0px" viewBox="0 0 1000 1000"
+                                 enable-background="new 0 0 1000 1000"
+                                 xml:space="preserve">
+<g>
+	<path fill="#fff"
+          d="M500,1000c276.1499634,0,500-223.8500366,500-500S776.1499634,0,500,0S0,223.8500061,0,500   S223.8500061,1000,500,1000z"/>
+    <path fill="#ff0002"
+          d="M743.25,426.2499695c-15.125-15.6000061-36.625-24.125-62.875-24.125   c-32.625,0-57.6749878,13.2500305-72.1000366,38.0750122V317H532.625v337.5999756h75.6500244V535.9000244   c0-27.6499634,5.6749878-45.3750305,14.2000122-55.7749634c8.25-10.4000244,19.8500366-14.4250183,32.375-14.4250183   c11.125,0,19.8500366,3.5500183,26,9.9249878c6.1500244,6.625,9.7000122,16.8000183,9.7000122,30.9750061v147.75h75.6500244   V491.7000427c0-27.6500244-8.0500488-50.125-22.9249878-65.5000305L743.25,426.2499695z M404.9749756,402.1249695   c-32.625,0-57.7000122,13.2500305-72.0999756,38.0750122V317h-75.6500244v337.5999756H332.875V535.9000244   c0-27.6499634,5.6499939-45.3750305,14.1749878-55.7749634c8.25-10.4000244,19.8500061-14.4250183,32.3999939-14.4250183   c11.1000061,0,19.8500061,3.5500183,25.9999695,9.9249878c6.1250305,6.625,9.6749878,16.8000183,9.6749878,30.9750061v147.75   h75.6499634V491.7000427c0-27.6500244-8.0249634-50.125-23.1499939-65.7250061   c-14.9000244-15.6000061-36.4250183-23.875-62.6500244-23.875L404.9749756,402.1249695z"/>
+</g>
+</svg>
+                        </a>
+                    </div>
+                    <div class="advantage-items">
+                        <p class="advantage-item">
+                            <svg aria-hidden="true" width="13" height="13" fill="#8800FF"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path>
+                            </svg>
+                            <span>Angular / TypeScript / RxJS</span>
+                        </p>
+                        <p class="advantage-item">
+                            <svg aria-hidden="true" width="13" height="13" fill="#8800FF"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path>
+                            </svg>
+                            <span>Коммерческий опыт</span>
+                        </p>
+                        <p class="advantage-item">
+                            <svg aria-hidden="true" width="13" height="13" fill="#8800FF"
+                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path>
+                            </svg>
+                            <span>REST API и backend</span>
+                        </p>
+                    </div>
+                </section>
+                <section class="column">
+                    <header class="section-title">
+                        <h3>Напишите мне</h3>
+                        <p>Отвечаю в течение 24 часов</p>
+                    </header>
+                    <form action="assets/forms/contact.php"
+                          method="post" id="php-form" class="php-email-form reveal"
+                          style="--reveal-delay: 200ms">
+                        <div class="name-block form-block">
+                            <label for="name">Имя</label>
+                            <input type="text" name="name" id="name" class="form-control"
+                                   pattern=".{3,50}" required minlength="3" maxlength="50">
+                            <div class="invalid-feedback">Заполните поле. Минимальная длина - 3 символа.</div>
+                        </div>
 
-                <div class="col-lg-7">
-                    <form action="assets/forms/contact.php" method="post" id="php-form" class="php-email-form"
-                          data-aos="fade-up"
-                          data-aos-delay="200" novalidate>
-                        <div class="row gy-4">
-                            <div class="col-md-6">
-                                <label for="name" class="pb-2">Ваше имя</label>
-                                <input type="text" name="name" id="name" class="form-control"
-                                       pattern=".{3,50}" required minlength="3" maxlength="50">
-                                <div class="invalid-feedback">Заполните поле. Минимальная длина - 3 символа.</div>
-                            </div>
+                        <div class="email-block form-block">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" required>
+                            <div class="invalid-feedback">Заполните поле. Пример корректного email: example@mail.com</div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <label for="email" class="pb-2">Ваш Email</label>
-                                <input type="email" class="form-control" name="email" id="email" required>
-                                <div class="invalid-feedback">Заполните поле. Пример корректного email:
-                                    example@mail.com
-                                </div>
-                            </div>
+                        <div class="theme-block form-block">
+                            <label for="message-type">Тип обращения:</label>
+                            <select name="message-type" id="message-type" required>
+                                <option value="vacancy">Вакансия</option>
+                                <option value="project">Проект</option>
+                                <option value="consultation">Консультация</option>
+                                <option value="another">Другое</option>
+                            </select>
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
 
-                            <div class="col-md-12">
-                                <label for="subject" class="pb-2">Тема</label>
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                       pattern=".{,100}" required maxlength="100">
-                                <div class="invalid-feedback">Заполните поле. Максимальная длина - 100 символов.</div>
-                            </div>
+                        <div class="message-block form-block">
+                            <label for="message-field">Сообщение</label>
+                            <textarea class="form-control" name="message" rows="5" id="message-field"
+                                      required maxlength="700"></textarea>
+                            <div class="invalid-feedback">Заполните поле. Максимальная длина - 700 символов.</div>
+                        </div>
 
-                            <div class="col-md-12">
-                                <label for="message-field" class="pb-2">Содержание</label>
-                                <textarea class="form-control" name="message" rows="10" id="message-field"
-                                          required maxlength="700"></textarea>
-                                <div class="invalid-feedback">Заполните поле. Максимальная длина - 700 символов.</div>
-                            </div>
-
-                            <div class="col-md-12 text-center">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Ваше сообщение было отправлено. Спасибо!</div>
-                                <button type="submit">Отправить</button>
-                            </div>
+                        <div class="loading-block form-block">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Ваше сообщение было отправлено. Спасибо!</div>
+                            <button type="submit">Отправить</button>
                         </div>
                     </form>
-                </div>
+                </section>
             </div>
         </div>
     </section>
 </main>
-
-<footer id="footer" class="footer position-relative light-background">
+<footer id="footer" class="footer light-background">
     <div class="container">
-        <p class="copyright text-center">
-            ©<span class="mx-1"><script>document.write(new Date().getFullYear())</script></span>Oleg Galuzinskiy.
+        <p class="copyright">
+            ©<span><script>document.write(new Date().getFullYear())</script></span>Oleg Galuzinskiy.
             <span>Frontend Developer</span>
         </p>
     </div>
 </footer>
-
-<a aria-hidden="true" href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
-
+<a aria-hidden="true" href="#" id="scroll-top" class="scroll-top">
+    <svg width="40" height="40" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+    </svg>
+</a>
 <div id="preloader"></div>
 
-<% const criticalJs = pick(assets.js, '/critical.min.js'); %>
-<% const asyncJs = pick(assets.js, '/async.min.js'); %>
-<% if (criticalJs) { %>
-<script src="<%= criticalJs %>" defer></script>
-<% } %>
-<% if (asyncJs) { %>
-<script>
-    (function () {
-        const load = function () {
-            let s = document.createElement('script');
-            s.src = "<%= asyncJs %>";
-            s.defer = true;
-            document.body.appendChild(s);
-        };
-
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(load, {timeout: 1500});
-        } else {
-            window.addEventListener('DOMContentLoaded', load);
-        }
-    })();
-</script>
-<% } %>
+<script src="js/index/critical.min.js"></script>
+<script defer="defer" src="js/index/async.min.js"></script>
 </body>
 </html>

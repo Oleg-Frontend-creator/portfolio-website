@@ -1,165 +1,135 @@
 const path = require('path');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const pageMap = {
-    'index-critical': 'index-page',
-    'index-async': 'index-page',
-    'portfolio-critical': 'portfolio-details-page',
-    'portfolio-async': 'portfolio-details-page',
-    'service-critical': 'service-details-page',
-    'service-async': 'service-details-page'
-};
+const SRC = path.resolve(__dirname, 'src');
+const DIST = path.resolve(__dirname, 'dist');
 
-function jsOut(chunkName) {
-    const page = pageMap[chunkName];
-    const type = chunkName.endsWith('critical') ? 'critical' : 'async';
-    return `js/${page}/${type}.min.js`;
-}
+module.exports = {
+    mode: 'production',
+    context: __dirname,
 
-function cssOut(chunkName) {
-    const page = pageMap[chunkName];
-    const type = chunkName.endsWith('critical') ? 'critical' : 'async';
-    return `css/${page}/${type}.min.css`;
-}
+    entry: {
+        // слева то, как будет в dist, справа - как в src лежит
+        'js/index/critical': path.join(SRC, 'js/entries/index/critical.js'),
+        'js/index/async': path.join(SRC, 'js/entries/index/async.js'),
+        'js/project/critical': path.join(SRC, 'js/entries/project/critical.js'),
+        'js/service/critical': path.join(SRC, 'js/entries/service/critical.js'),
+        'js/service/async': path.join(SRC, 'js/entries/service/async.js'),
 
-module.exports = (env, argv) => {
-    const isProd = argv.mode === 'production';
+        'css/index/async': path.join(SRC, 'css/page-styles/index.css'),
+        'css/index/critical': path.join(SRC, 'css/page-styles/index-hero.css'),
+        'css/project/critical': path.join(SRC, 'css/page-styles/project.css'),
+        'css/service/async': path.join(SRC, 'css/page-styles/service.css'),
+        'css/service/critical': path.join(SRC, 'css/page-styles/service-hero.css'),
+    },
 
-    return {
-        entry: {
-            'index-critical': './src/entries/index/critical.js',
-            'index-async': './src/entries/index/async.js',
+    output: {
+        path: DIST,
+        filename: '[name].min.js',
+        clean: true,
+        publicPath: '',
+    },
 
-            'portfolio-critical': './src/entries/portfolio/critical.js',
-            'portfolio-async': './src/entries/portfolio/async.js',
+    module: {
+        rules: [
+            {
+                test: /\.(css)$/i,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {publicPath: '../../'}
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {url: true}
+                    }
+                ],
+            },
 
-            'service-critical': './src/entries/service/critical.js',
-            'service-async': './src/entries/service/async.js'
-        },
+            {
+                test: /\.(png|jpe?g|gif|webp|svg)$/i,
+                type: 'asset/resource',
+                generator: {filename: 'assets/img/[name][ext][query]'},
+            },
 
-        output: {
-            path: path.resolve(__dirname, 'dist'),
-            filename: (pathData) => jsOut(pathData.chunk.name),
-            assetModuleFilename: 'assets/[name][ext][query]',
-            publicPath: './',
-            clean: false
-        },
+            {
+                test: /\.(woff2)$/i,
+                type: 'asset/resource',
+                generator: {filename: 'assets/fonts/[name][ext][query]'},
+            },
 
-        module: {
-            rules: [
-                {
-                    test: /\.(scss|css)$/i,
-                    use: [
-                        {
-                            loader: MiniCssExtractPlugin.loader,
-                            options: {
-                                publicPath: '../../'
-                            }
-                        },
-                        'css-loader',
-                        'sass-loader'
-                    ]
-                },
-                {
-                    test: /\.(png|jpe?g|gif|svg|webp)$/i,
-                    type: 'asset/resource',
-                    generator: {filename: 'assets/img/[name][ext]'}
-                },
-                {
-                    test: /\.(woff2|woff|eot|ttf|otf)$/i,
-                    type: 'asset/resource',
-                    generator: {filename: 'assets/fonts/[name][ext]'}
-                },
-            ]
-        },
-
-        plugins: [
-            new CleanWebpackPlugin(),
-
-            new MiniCssExtractPlugin({
-                filename: (pathData) => cssOut(pathData.chunk.name)
-            }),
-
-            // HTML
-            new HtmlWebpackPlugin({
-                template: './src/pages/index.html',
-                filename: 'index.html',
-                chunks: ['index-critical', 'index-async'],
-                inject: false,
-                templateParameters: (compilation, assets, assetTags, options) => {
-                    const pick = (arr, part) => (arr || []).find((x) => x.includes(part));
-                    return {
-                        ...options,
-                        assets,
-                        pick
-                    };
-                }
-            }),
-
-            new HtmlWebpackPlugin({
-                template: './src/pages/portfolio-details.html',
-                filename: 'portfolio-details.html',
-                chunks: ['portfolio-critical', 'portfolio-async'],
-                inject: false,
-                templateParameters: (compilation, assets, assetTags, options) => {
-                    const pick = (arr, part) => (arr || []).find((x) => x.includes(part));
-                    return {
-                        ...options,
-                        assets,
-                        pick
-                    };
-                }
-            }),
-
-            new HtmlWebpackPlugin({
-                template: './src/pages/service-details.html',
-                filename: 'service-details.html',
-                chunks: ['service-critical', 'service-async'],
-                inject: false,
-                templateParameters: (compilation, assets, assetTags, options) => {
-                    const pick = (arr, part) => (arr || []).find((x) => x.includes(part));
-                    return {
-                        ...options,
-                        assets,
-                        pick
-                    };
-                }
-            }),
-
-            // Static folders
-            new CopyWebpackPlugin({
-                patterns: [
-                    {from: './src/forms', to: 'forms'},
-                    {from: './src/img', to: 'assets/img'},
-                    {from: './src/Oleg_Galuzinsky_Frontend_Portfolio_2026.pdf', to: 'assets/'},
-                ]
-            })
+            {
+                test: /\.(pdf)$/i,
+                type: 'asset/resource',
+                generator: {filename: 'assets/[name][ext][query]'},
+            }
         ],
+    },
 
-        optimization: {
-            minimize: isProd,
-            minimizer: [
-                new TerserPlugin({extractComments: false}),
-                new CssMinimizerPlugin()
-            ]
-        },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({extractComments: false}),
+            new CssMinimizerPlugin(),
+        ],
+    },
 
-        devServer: {
-            static: {directory: path.join(__dirname, 'dist')},
-            port: 63342,
-            open: ['index.html'],
-            hot: true
-        },
+    plugins: [
+        new RemoveEmptyScriptsPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name].min.css',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: path.join(SRC, 'img'), to: 'assets/img', noErrorOnMissing: true},
+                {from: path.join(SRC, 'php'), to: 'php', noErrorOnMissing: true},
+            ],
+        }),
 
-        resolve: {
-            extensions: ['.js', '.scss']
-        },
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.join(SRC, 'pages/index.html'),
+            inject: false,
+            chunks: [
+                'page-styles/index',
+                'page-styles/index-hero',
+                'index/critical',
+                'index/async',
+            ],
+        }),
 
-        devtool: isProd ? false : 'source-map'
-    };
+        new HtmlWebpackPlugin({
+            filename: 'project-details.html',
+            template: path.join(SRC, 'pages/project-details.html'),
+            inject: false,
+            chunks: [
+                'page-styles/project',
+                'project/critical',
+            ],
+        }),
+
+        new HtmlWebpackPlugin({
+            filename: 'service-details.html',
+            template: path.join(SRC, 'pages/service-details.html'),
+            inject: false,
+            chunks: [
+                'page-styles/service',
+                'page-styles/service-hero',
+                'service/critical',
+                'service/async',
+            ],
+        }),
+    ],
+
+    resolve: {
+        extensions: ['.js', '.css'],
+    },
+
+    stats: 'errors-warnings',
 };

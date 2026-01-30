@@ -1,0 +1,115 @@
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+
+  &:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #ffffff;
+    border-color: var(--accent-color) transparent var(--accent-color) transparent;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: animate-preloader 1.5s linear infinite;
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.scroll-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 20px;
+  transform: translateY(8px);
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 15px;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    fill: var(--contrast-color);
+  }
+}
+
+section, .section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  overflow: clip;
+}
+
+.section-title {
+  padding-bottom: 60px;
+  position: relative;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  section, .section {
+    padding: 30px 0;
+  }
+
+  .section-title p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 575px) {
+  .section-title h2 {
+    font-size: 24px;
+  }
+}
